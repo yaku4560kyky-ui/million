@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>アミューズメントカジノバーmillion スタッフ業務内容一覧</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --blue-main: #2563eb;
+      --blue-dark: #1e3a8a;
+      --blue-soft: #eff6ff;
+      --blue-border: #bfdbfe;
+      --text-main: #1f2937;
+      --text-sub: #64748b;
+      --line: #e5e7eb;
+      --white: #ffffff;
+      --bg: #f8fafc;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.75;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 36px 20px 56px;
+    }
+
+    .header {
+      text-align: center;
+      background: var(--white);
+      color: var(--text-main);
+      padding: 36px 20px;
+      border-radius: 18px;
+      border: 1px solid var(--blue-border);
+      box-shadow: 0 4px 18px rgba(37, 99, 235, 0.08);
+      margin-bottom: 28px;
+    }
+
+    .header .shop-name {
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      color: var(--blue-main);
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 42px);
+      letter-spacing: 0.06em;
+      color: var(--blue-dark);
+    }
+
+    .header p {
+      margin: 12px 0 0;
+      font-size: 15px;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+
+    .note-box {
+      background: var(--blue-soft);
+      border: 1px solid var(--blue-border);
+      border-left: 6px solid var(--blue-main);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 26px;
+      font-weight: 700;
+      color: var(--blue-dark);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .summary-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--blue-main);
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+    }
+
+    .summary-card .number {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--blue-main);
+      line-height: 1;
+    }
+
+    .summary-card .label {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--text-sub);
+      font-weight: 700;
+    }
+
+    .section-title {
+      margin: 36px 0 16px;
+      padding-left: 12px;
+      border-left: 6px solid var(--blue-main);
+      font-size: 24px;
+      color: var(--blue-dark);
+    }
+
+    .sub-title {
+      margin: 26px 0 12px;
+      font-size: 19px;
+      color: var(--blue-dark);
+      border-bottom: 2px solid var(--blue-border);
+      padding-bottom: 6px;
+    }
+
+    .staff-grid,
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 16px;
+    }
+
+    .staff-card,
+    .detail-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+      border: 1px solid var(--line);
+    }
+
+    .staff-name,
+    .detail-title {
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+      padding: 14px 18px;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--blue-border);
+    }
+
+    .detail-title {
+      background: #f0f7ff;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--blue-main);
+      color: var(--white);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tasks,
+    .detail-list {
+      padding: 16px 20px 20px;
+      margin: 0;
+      list-style: none;
+    }
+
+    .tasks li,
+    .detail-list li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .tasks li::before,
+    .detail-list li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: var(--blue-main);
+      font-size: 18px;
+      top: -1px;
+      line-height: 1.4;
+    }
+
+    .small-text {
+      font-size: 13px;
+      color: var(--text-sub);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .table-wrap {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+      overflow: hidden;
+      margin-top: 18px;
+      border: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 15px;
+    }
+
+    th {
+      background: var(--blue-main);
+      color: var(--white);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      font-weight: 800;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f9fbff;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .name-cell {
+      font-weight: 800;
+      color: var(--blue-dark);
+      white-space: nowrap;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 14px;
+    }
+
+    .check-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--blue-main);
+    }
+
+    .check-card h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      color: var(--blue-dark);
+    }
+
+    .check-card ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .check-card li {
+      margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .footer {
+      margin-top: 34px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        max-width: none;
+        padding: 16px;
+      }
+
+      .header,
+      .staff-card,
+      .summary-card,
+      .table-wrap,
+      .detail-card,
+      .check-card {
+        box-shadow: none;
+      }
+
+      .staff-grid,
+      .detail-grid,
+      .checklist {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div class="shop-name">Amusement Casino Bar million</div>
+      <h1>スタッフ業務内容一覧</h1>
+      <p>各スタッフの主な担当業務・詳細業務・運営時の確認項目</p>
+    </header>
+
+    <div class="note-box">
+      この一覧は、スタッフごとの担当範囲を明確化し、通常営業・イベント運営・SNS告知・ディーラー業務・新人育成を円滑に行うための業務整理表です。実際の運用では、当日の混雑状況・イベント内容・スタッフ人数に応じて柔軟に分担してください。
+    </div>
+
+    <section class="summary" aria-label="業務カテゴリ概要">
+      <div class="summary-card">
+        <div class="number">5</div>
+        <div class="label">運営・イベント管理</div>
+      </div>
+      <div class="summary-card">
+        <div class="number">4</div>
+        <div class="label">広報・制作業務</div>
+      </div>
+      <div class="summary-card">
+        <div class="number">6</div>
+        <div class="label">店舗営業・接客管理</div>
+      </div>
+      <div class="summary-card">
+        <div class="number">13</div>
+        <div class="label">ディーラー・ゲーム対応</div>
+      </div>
+    </section>
+
+    <h2 class="section-title">主要担当スタッフ</h2>
+    <section class="staff-grid">
+      <article class="staff-card">
+        <div class="staff-name">清永 光美 <span class="tag">運営統括</span></div>
+        <ul class="tasks">
+          <li>EXCEED運営業務</li>
+          <li>職域対抗戦業務</li>
+          <li>各種イベント運営業務</li>
+          <li>スタッフ育成業務</li>
+          <li>大会・イベント進行管理</li>
+          <li>スタッフ配置・役割分担の確認</li>
+        </ul>
+      </article>
+
+      <article class="staff-card">
+        <div class="staff-name">金丸 茉琴 <span class="tag">SNS・店舗運営</span></div>
+        <ul class="tasks">
+          <li>SNS告知担当</li>
+          <li>店舗運営（バーカウンター回し）</li>
+          <li>スタッフ育成業務</li>
+          <li>来店促進の告知文作成</li>
+          <li>営業中の接客・ドリンク提供管理</li>
+        </ul>
+      </article>
+
+      <article class="staff-card">
+        <div class="staff-name">蒲地 皓揮 <span class="tag">SNS・店舗運営</span></div>
+        <ul class="tasks">
+          <li>SNS告知担当</li>
+          <li>店舗運営（バーカウンター回し）</li>
+          <li>スタッフ育成業務</li>
+          <li>イベント告知補助</li>
+          <li>営業中のオペレーション補助</li>
+        </ul>
+      </article>
+
+      <article class="staff-card">
+        <div class="staff-name">今村 孝彰 <span class="tag">ディーラー・助言</span></div>
+        <ul class="tasks">
+          <li>ディーラー業務（BJ・Bc・Tx・PLO）</li>
+          <li>各種店舗アドバイス</li>
+          <li>ゲーム進行品質の確認</li>
+          <li>ディーラー目線での改善提案</li>
+        </ul>
+      </article>
+
+      <article class="staff-card">
+        <div class="staff-name">岩川 侑和 <span class="tag">ディーラー・店舗運営</span></div>
+        <ul class="tasks">
+          <li>ディーラー業務（BJ・Bc・Tx・PLO）</li>
+          <li>店舗運営（バーカウンター）</li>
+          <li>ゲーム卓・カウンター間の連携</li>
+          <li>混雑時の接客補助</li>
+        </ul>
+      </article>
+
+      <article class="staff-card">
+        <div class="staff-name">漆間 綾華 <span class="tag">制作・ディーラー</span></div>
+        <ul class="tasks">
+          <li>画像作成</li>
+          <li>ディーラー業務（Bc）</li>
+          <li>SNS・告知用素材の制作補助</li>
+          <li>イベント用ビジュアル作成</li>
+        </ul>
+      </article>
+    </section>
+
+    <h2 class="section-title">各種業務内容 詳細</h2>
+    <section class="detail-grid">
+      <article class="detail-card">
+        <div class="detail-title">EXCEED運営業務 <span class="tag">大会運営</span></div>
+        <ul class="detail-list">
+          <li>大会日程・開催概要の確認</li>
+          <li>トーナメント内容、参加費、スタック、レイトレジスト時間の確認</li>
+          <li>バウチャーチケットの配布状況管理</li>
+          <li>協力店舗への案内・説明・連絡対応</li>
+          <li>ポスター、告知画像、SNS投稿内容の確認</li>
+          <li>参加者へのルール説明・問い合わせ対応</li>
+          <li>大会当日の受付導線・案内導線の確認</li>
+          <li>プライズ、チケット、参加権利などの管理</li>
+          <li>大会終了後の集計・報告・改善点の整理</li>
+        </ul>
+      </article>
+
+      <article class="detail-card">
+        <div class="detail-title">職域対抗戦業務 <span class="tag">団体イベント</span></div>
+        <ul class="detail-list">
+          <li>参加企業・団体・チームの管理</li>
+          <li>参加人数、チーム分け、席配置の確認</li>
+          <li>初心者向けルール説明の準備</li>
+          <li>進行表・タイムスケジュール作成</li>
+          <li>受付、参加費、名簿管理</li>
+          <li>ゲーム進行中の案内・サポート</li>
+          <li>表彰、写真撮影、結果発表の準備</li>
+          <li>終了後の忘れ物・精算・次回案内</li>
+        </ul>
+      </article>
+
+      <article class="detail-card">
+        <div class="detail-title">各種イベント運営業務 <span class="tag">店舗企画</span></div>
+        <ul class="detail-list">
+          <li>イベント内容の企画・目的設定</li>
+          <li>開催日、開始時間、参加条件の整理</li>
+          <li>必要備品・チップ・カード・景品の準備</li>
+          <li>告知画像・SNS投稿文の作成依頼</li>
+          <li>スタッフ配置、担当卓、受付担当の設定</li>
+          <li>当日の進行管理と時間管理</li>
+          <li>トラブル発生時の一次対応</li>
+          <li>売上・参加人数・反応の振り返り</li>
+          <li>次回改善案の共有</li>
+        </ul>
+      </article>
+
+      <article class="detail-card">
+        <div class="detail-title">SNS告知担当 <span class="tag">集客・広報</span></div>
+        <ul class="detail-list">
+          <li>Instagram、Xなどへのイベント告知投稿</li>
+          <li>投稿文の作成、誤字脱字チェック</li>
+          <li>開催日時、料金、内容、注意事項の確認</li>
+          <li>ストーリー投稿・リマインド投稿</li>
+          <li>営業中の雰囲気写真や動画の投稿</li>
+          <li>お客様に不快感を与えない写真選定</li>
+          <li>DMや問い合わせの一次確認</li>
+          <li>投稿後の反応確認、保存数・閲覧数の把握</li>
+          <li>イベント終了後の結果報告投稿</li>
+        </ul>
+      </article>
+
+      <article class="detail-card">
+        <div class="detail-title">画像作成 <span class="tag">クリエイティブ</span></div>
+        <ul class="detail-list">
+          <li>イベント告知画像の作成</li>
+          <li>Instagram投稿用・ストーリー用サイズの作成</li>
+          <li>店舗ロゴ、住所、TELなどの基本情報挿入</li>
+          <li>料金・時間・プライズ表記の確認</li>
+          <li>視認性の高い文字サイズ・配色の調整</li>
+          <li>印刷用ポスターや店内掲示物の作成補助</li>
+          <li>修正依頼への対応</li>
+          <li>過去デザインの管理・再利用</li>
+        </ul>
+      </article>
+
+      <article class="detail-card">
+        <div class="detail-title">店舗運営（バーカウンター） <span class="tag">営業管理</span></div>
+        <ul class="detail-list">
+          <li>来店時の挨拶・席案内・入場確認</li>
+          <li>ドリンク、フード、キャスドリの注文対応</li>
+          <li>会計・レジ対応・支払い方法の確認</li>
+          <li>カウンター周りの清掃・整理整頓</li>
+          <li>グラス、氷、ドリンク在庫の確認</li>
+          <li>フード提供のタイミング管理</li>
+          <li>お客様の滞在状況・飲みすぎ・トラブル予兆の確認</li>
+          <li>ディーラー卓との連携</li>
+          <li>閉店作業、レジ締め補助、忘れ物確認</li>
+        </ul>
+      </article>
+
+      <article class="detail-card">
+        <div class="detail-title">スタッフ育成業務 <span class="tag">教育</span></div>
+        <ul class="detail-list">
+          <li>新人スタッフへの店舗ルール説明</li>
+          <li>接客マナー、挨拶、言葉遣いの指導</li>
+          <li>バーカウンター業務の実践指導</li>
+          <li>ゲームごとの基本ルール教育</li>
+          <li>ディーラー業務の所作・進行テンポ確認</li>
+          <li>ミス発生時の原因確認と改善指導</li>
+          <li>営業中のフォロー、声かけ、役割分担</li>
+          <li>成長度合いの確認と次の課題設定</li>
+          <li>スタッフ同士の連携が取れる環境づくり</li>
+        </ul>
+      </article>
+
+      <article class="detail-card">
+        <div class="detail-title">各種店舗アドバイス <span class="tag">改善提案</span></div>
+        <ul class="detail-list">
+          <li>ゲーム進行の改善提案</li>
+          <li>ディーラーの動き・声量・テンポの確認</li>
+          <li>お客様目線での導線・雰囲気の確認</li>
+          <li>イベント内容や料金設定への助言</li>
+          <li>スタッフ配置やオペレーションの改善提案</li>
+          <li>初心者対応の分かりやすさ確認</li>
+          <li>トラブル防止のためのルール整備提案</li>
+          <li>店舗全体のサービス品質向上の提案</li>
+        </ul>
+      </article>
+
+      <article class="detail-card">
+        <div class="detail-title">ディーラー業務 <span class="tag">ゲーム進行</span></div>
+        <ul class="detail-list">
+          <li>ゲーム開始前のチップ、カード、卓上備品確認</li>
+          <li>ルール説明、初心者へのサポート</li>
+          <li>BJ、Bc、Tx、PLOなど担当ゲームの進行</li>
+          <li>ベット、アクション、ポット、ペイアウトの確認</li>
+          <li>正確なカード配布・シャッフル・カット対応</li>
+          <li>ゲームテンポの維持</li>
+          <li>不明点やトラブル時の上長確認</li>
+          <li>お客様同士の雰囲気づくり</li>
+          <li>卓終了後の片付け、チップ整理、カード確認</li>
+          <li>不正防止、見落とし防止、発声確認</li>
+        </ul>
+      </article>
+    </section>
+
+    <h2 class="section-title">ディーラー業務 担当一覧</h2>
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>スタッフ名</th>
+            <th>主な業務内容</th>
+            <th>対応ゲーム</th>
+            <th>補足業務</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name-cell">今村 孝彰</td>
+            <td>ディーラー業務、各種店舗アドバイス</td>
+            <td>BJ・Bc・Tx・PLO</td>
+            <td>ゲーム進行品質の確認、改善提案</td>
+          </tr>
+          <tr>
+            <td class="name-cell">岩川 侑和</td>
+            <td>ディーラー業務、店舗運営（バーカウンター）</td>
+            <td>BJ・Bc・Tx・PLO</td>
+            <td>カウンターと卓の連携、混雑時の接客補助</td>
+          </tr>
+          <tr>
+            <td class="name-cell">海老原 響</td>
+            <td>ディーラー業務</td>
+            <td>BJ・Bc・Tx・PLO</td>
+            <td>通常営業・イベント時の卓進行</td>
+          </tr>
+          <tr>
+            <td class="name-cell">有村 奏音</td>
+            <td>ディーラー業務</td>
+            <td>BJ・Bc・Tx・PLO</td>
+            <td>通常営業・イベント時の卓進行</td>
+          </tr>
+          <tr>
+            <td class="name-cell">宮本 寛也</td>
+            <td>ディーラー業務</td>
+            <td>BJ・Bc・Tx・PLO</td>
+            <td>通常営業・イベント時の卓進行</td>
+          </tr>
+          <tr>
+            <td class="name-cell">中馬 正貴</td>
+            <td>ディーラー業務</td>
+            <td>BJ・Bc・Tx・PLO</td>
+            <td>通常営業・イベント時の卓進行</td>
+          </tr>
+          <tr>
+            <td class="name-cell">近藤 嶺太</td>
+            <td>ディーラー業務</td>
+            <td>BJ・Bc・Tx・PLO</td>
+            <td>通常営業・イベント時の卓進行</td>
+          </tr>
+          <tr>
+            <td class="name-cell">川辺 勝暉</td>
+            <td>ディーラー業務</td>
+            <td>BJ・Bc・Tx・PLO</td>
+            <td>通常営業・イベント時の卓進行</td>
+          </tr>
+          <tr>
+            <td class="name-cell">寺師 青師郎</td>
+            <td>ディーラー業務</td>
+            <td>BJ・Bc</td>
+            <td>担当可能ゲームの安定進行</td>
+          </tr>
+          <tr>
+            <td class="name-cell">漆間 綾華</td>
+            <td>画像作成、ディーラー業務</td>
+            <td>Bc</td>
+            <td>告知素材制作、Bc卓進行</td>
+          </tr>
+          <tr>
+            <td class="name-cell">池田 りた</td>
+            <td>ディーラー業務</td>
+            <td>指定なし</td>
+            <td>担当可能範囲に応じて卓配置</td>
+          </tr>
+          <tr>
+            <td class="name-cell">細田 蒼桜</td>
+            <td>ディーラー業務</td>
+            <td>指定なし</td>
+            <td>担当可能範囲に応じて卓配置</td>
+          </tr>
+          <tr>
+            <td class="name-cell">阿部 悠菜</td>
+            <td>ディーラー業務</td>
+            <td>指定なし</td>
+            <td>担当可能範囲に応じて卓配置</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <h2 class="section-title">業務カテゴリ別 担当者一覧</h2>
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>業務カテゴリ</th>
+            <th>担当スタッフ</th>
+            <th>詳細内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name-cell">EXCEED運営業務</td>
+            <td>清永 光美</td>
+            <td>大会概要確認、バウチャー管理、協力店舗連絡、告知確認、当日導線管理、結果報告</td>
+          </tr>
+          <tr>
+            <td class="name-cell">職域対抗戦業務</td>
+            <td>清永 光美</td>
+            <td>参加チーム管理、席配置、進行表作成、初心者説明、表彰準備、結果共有</td>
+          </tr>
+          <tr>
+            <td class="name-cell">各種イベント運営業務</td>
+            <td>清永 光美</td>
+            <td>企画立案、日程調整、備品準備、スタッフ配置、当日進行、振り返り</td>
+          </tr>
+          <tr>
+            <td class="name-cell">SNS告知担当</td>
+            <td>金丸 茉琴、蒲地 皓揮</td>
+            <td>投稿作成、ストーリー告知、リマインド、問い合わせ確認、結果投稿、反応確認</td>
+          </tr>
+          <tr>
+            <td class="name-cell">画像作成</td>
+            <td>漆間 綾華</td>
+            <td>イベント画像、投稿用画像、ストーリー画像、店内掲示物、修正対応、過去素材管理</td>
+          </tr>
+          <tr>
+            <td class="name-cell">店舗運営（バーカウンター）</td>
+            <td>金丸 茉琴、蒲地 皓揮、岩川 侑和</td>
+            <td>受付、注文対応、会計、ドリンク提供、清掃、在庫確認、卓との連携、閉店作業</td>
+          </tr>
+          <tr>
+            <td class="name-cell">スタッフ育成業務</td>
+            <td>清永 光美、金丸 茉琴、蒲地 皓揮</td>
+            <td>新人教育、接客指導、ゲームルール教育、オペレーション指導、成長確認</td>
+          </tr>
+          <tr>
+            <td class="name-cell">各種店舗アドバイス</td>
+            <td>今村 孝彰</td>
+            <td>ゲーム進行、接客、導線、イベント内容、スタッフ配置、トラブル防止に関する改善提案</td>
+          </tr>
+          <tr>
+            <td class="name-cell">ディーラー業務</td>
+            <td>今村 孝彰、岩川 侑和、海老原 響、有村 奏音、宮本 寛也、中馬 正貴、近藤 嶺太、川辺 勝暉、寺師 青師郎、漆間 綾華、池田 りた、細田 蒼桜、阿部 悠菜</td>
+            <td>ゲーム準備、ルール説明、カード配布、ベット確認、進行管理、片付け、不正防止、初心者対応</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <h2 class="section-title">営業時チェックリスト</h2>
+    <section class="checklist">
+      <div class="check-card">
+        <h3>開店前</h3>
+        <ul>
+          <li>店内清掃、卓・カウンター確認</li>
+          <li>カード、チップ、備品の準備</li>
+          <li>予約、イベント、スタッフ配置の確認</li>
+          <li>SNS告知・当日案内の確認</li>
+        </ul>
+      </div>
+      <div class="check-card">
+        <h3>営業中</h3>
+        <ul>
+          <li>来店対応、入場案内、注文対応</li>
+          <li>卓の進行状況とお客様の様子確認</li>
+          <li>ドリンク・フード提供の遅れ確認</li>
+          <li>トラブルや不明点は早めに共有</li>
+        </ul>
+      </div>
+      <div class="check-card">
+        <h3>イベント中</h3>
+        <ul>
+          <li>開始時間、レジスト締切、進行表確認</li>
+          <li>参加者案内、チップ配布、席誘導</li>
+          <li>結果、プライズ、写真撮影の確認</li>
+          <li>終了後の報告・改善点整理</li>
+        </ul>
+      </div>
+      <div class="check-card">
+        <h3>閉店後</h3>
+        <ul>
+          <li>卓・カウンター・店内の片付け</li>
+          <li>レジ締め、売上確認、忘れ物確認</li>
+          <li>翌営業日の準備、不足備品の共有</li>
+          <li>SNS投稿や報告事項の整理</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer">
+      アミューズメントカジノバーmillion｜スタッフ業務内容一覧・詳細版
+    </footer>
+  </main>
+</body>
+</html>
