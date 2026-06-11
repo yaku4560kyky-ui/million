@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>テキサスホールデム ディーラー進行・裁定マニュアル | million</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --panel:#ffffff;
+    --soft:#f4f8f5;
+    --soft2:#eef4ef;
+    --ink:#1c2620;
+    --ink2:#445049;
+    --muted:#7c8a81;
+    --green:#1f7a4d;
+    --green-d:#155f3b;
+    --green-l:#e7f3ec;
+    --green-line:#cfe6d8;
+    --accent:#2e9d63;
+    --red:#c0392b;
+    --red-l:#fbecea;
+    --line:#e6ebe7;
+    --shadow:0 1px 3px rgba(20,60,40,.06), 0 8px 24px rgba(20,60,40,.05);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans JP",sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+
+  /* Header */
+  header{
+    background:var(--green);
+    color:#fff;
+    padding:48px 20px 40px;
+    text-align:center;
+  }
+  header .eyebrow{
+    font-size:.78rem;letter-spacing:.35em;opacity:.85;margin-bottom:14px;
+  }
+  header h1{
+    font-family:"Noto Sans JP",sans-serif;font-weight:700;
+    font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.35;
+  }
+  header .sub{margin-top:12px;font-size:.95rem;opacity:.92;font-weight:500}
+  .badges{margin-top:22px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .badge{
+    font-size:.74rem;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 13px;
+  }
+
+  /* Nav */
+  nav{
+    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;gap:4px;flex-wrap:wrap;padding:10px 20px}
+  nav a{
+    font-size:.82rem;font-weight:700;color:var(--ink2);text-decoration:none;
+    padding:7px 13px;border-radius:7px;transition:.15s;white-space:nowrap;
+  }
+  nav a:hover{background:var(--green-l);color:var(--green-d)}
+
+  /* Section */
+  section{padding:50px 0 8px;scroll-margin-top:60px}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+  .sec-num{
+    font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:1rem;color:#fff;
+    background:var(--green);min-width:42px;height:42px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .sec-head h2{font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:clamp(1.3rem,3vw,1.65rem)}
+  .sec-head p{color:var(--muted);font-size:.88rem;margin-top:2px}
+
+  /* Phase card */
+  .phase{
+    background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--green);
+    border-radius:12px;padding:22px 24px;margin-bottom:14px;box-shadow:var(--shadow);
+  }
+  .ph-top{display:flex;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+  .ph-step{
+    font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--green);
+    background:var(--green-l);padding:3px 10px;border-radius:6px;
+  }
+  .phase h3{font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:1.12rem}
+  .ph-tag{font-size:.7rem;color:var(--muted);border:1px solid var(--line);padding:2px 9px;border-radius:999px}
+  .phase ol,.phase ul{margin:10px 0 0;padding-left:0;list-style:none}
+  .phase li{
+    position:relative;padding:6px 0 6px 24px;color:var(--ink2);font-size:.93rem;
+    border-bottom:1px solid var(--soft2);
+  }
+  .phase li:last-child{border-bottom:none}
+  .phase li::before{
+    content:"";position:absolute;left:5px;top:15px;width:6px;height:6px;border-radius:50%;background:var(--accent);
+  }
+  .phase li b{color:var(--ink);font-weight:700}
+  .phase li .key{color:var(--green-d);font-weight:700}
+
+  .note{margin-top:12px;border-radius:9px;padding:11px 15px 11px 40px;position:relative;font-size:.85rem;border:1px solid}
+  .note::before{position:absolute;left:14px;top:11px;font-size:1rem}
+  .note.warn{border-color:#f0c9c3;background:var(--red-l);color:#8c2c20}
+  .note.warn::before{content:"⚠";color:var(--red)}
+  .note.tip{border-color:var(--green-line);background:var(--green-l);color:var(--green-d)}
+  .note.tip::before{content:"◆";color:var(--green)}
+  .note b{color:var(--ink)}
+
+  /* Caution grid */
+  .cgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:740px){.cgrid{grid-template-columns:1fr}}
+  .ccard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)}
+  .ccard h4{
+    font-family:"Noto Sans JP",sans-serif;font-weight:700;font-size:1rem;color:var(--green-d);
+    display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:9px;border-bottom:2px solid var(--green-l);
+  }
+  .ccard ul{list-style:none}
+  .ccard li{position:relative;padding:7px 0 7px 20px;font-size:.89rem;color:var(--ink2);border-bottom:1px solid var(--soft2)}
+  .ccard li:last-child{border-bottom:none}
+  .ccard li::before{content:"▸";position:absolute;left:2px;color:var(--accent);font-size:.8rem;top:8px}
+  .ccard li b{color:var(--ink)}
+  .ccard li .hl{color:var(--red);font-weight:700}
+
+  /* Table */
+  .tbl-scroll{overflow-x:auto;border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:680px;font-size:.88rem;background:#fff}
+  thead th{
+    background:var(--green);color:#fff;font-family:"Noto Sans JP",sans-serif;font-weight:700;
+    text-align:left;padding:13px 15px;
+  }
+  tbody td{padding:12px 15px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+  tbody tr:nth-child(even){background:var(--soft)}
+  tbody tr:hover{background:var(--green-l)}
+  tbody td:first-child{color:var(--ink);font-weight:700;white-space:nowrap}
+  td .term{display:block;font-size:.72rem;color:var(--green);margin-top:3px}
+  .verdict{color:var(--red);font-weight:700}
+  .ok{color:var(--green-d);font-weight:700}
+
+  /* Rake */
+  .rakebox{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:680px){.rakebox{grid-template-columns:1fr}}
+  .rake{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:#fff;box-shadow:var(--shadow)}
+  .rake .rt{font-family:"Noto Sans JP",sans-serif;font-weight:700;color:var(--green-d);font-size:1rem;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--green-l)}
+  .rake .r-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--soft2);font-size:.9rem}
+  .rake .r-row:last-child{border-bottom:none}
+  .rake .r-row span:first-child{color:var(--muted)}
+  .rake .r-row span:last-child{color:var(--ink);font-weight:700}
+  .rake .r-row .em{color:var(--green-d)}
+
+  footer{margin-top:54px;padding:32px 20px;text-align:center;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;background:var(--soft)}
+  footer .crest{font-family:"Noto Sans JP",sans-serif;font-weight:700;color:var(--green);font-size:1rem;letter-spacing:.2em;margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">TEXAS HOLD'EM &nbsp;|&nbsp; DEALER MANUAL</div>
+  <h1>テキサスホールデム<br>ディーラー進行・裁定マニュアル</h1>
+  <p class="sub">ゲーム進行手順 ／ ディーラー注意点 ／ プレイヤーマナー裁定一覧</p>
+  <div class="badges">
+    <span class="badge">No-Limit 運用基準</span>
+    <span class="badge">通常卓 5-10 / ハイレート 10-20</span>
+    <span class="badge">ディーラー教育・裁定統一用</span>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <a href="#flow">① 進行手順</a>
+    <a href="#caution">② ディーラー注意点</a>
+    <a href="#ruling">③ マナー裁定一覧</a>
+    <a href="#rake">④ レーキ・授受基準</a>
+    <a href="#quick">⑤ 早見・禁止事項</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- 1 FLOW -->
+<section id="flow">
+  <div class="sec-head">
+    <div class="sec-num">Ⅰ</div>
+    <div><h2>ゲーム進行の手順</h2><p>1ハンドの開始準備からポット授与・次ハンド開始までの標準フロー</p></div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-step">STEP 0</span><h3>テーブル準備・カード確認</h3><span class="ph-tag">ハンド前</span></div>
+    <ol>
+      <li>デッキの<b>枚数確認（52枚／ジョーカー除外）</b>。新品開封時は<span class="key">フェイスアップで4スート×13ランクを必ず確認</span>。</li>
+      <li><b>ウォッシュ（スクランブル）</b>：テーブル上で円を描くように混ぜ、前ハンドの並びを完全に崩す。</li>
+      <li><b>リフルシャッフル×2 → ストリップ → リフル → カット</b>の順を毎ハンド徹底。</li>
+      <li>カットはカットカードで行い、<span class="key">ボトムカードが見えないように</span>当てる。</li>
+      <li>手・カードは常にプレイヤーから見える<b>テーブル上の位置</b>に保つ。膝上・テーブル下に下ろさない。</li>
+    </ol>
+    <div class="note tip"><b>目的</b>：シャッフルの「型」を固定し、イカサマ疑義とトラブルを未然に防ぐ。手順を省略しない。</div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-step">STEP 1</span><h3>ボタン移動・ブラインド徴収</h3><span class="ph-tag">プリフロップ前</span></div>
+    <ol>
+      <li><b>ディーラーボタンを時計回りに1つ移動</b>。位置を見える形で確定。</li>
+      <li><span class="key">SB（$5）</span>をボタン左隣から徴収しベットラインへ。</li>
+      <li><span class="key">BB（$10）</span>をその左隣から徴収。ストラドルは宣言の正当性とBB位置を確認のうえ受理。</li>
+      <li>欠席席・ミスドブラインドの扱いはハウスルールに従って処理。</li>
+    </ol>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-step">STEP 2</span><h3>ホールカード配布</h3><span class="ph-tag">配牌</span></div>
+    <ol>
+      <li><b>SB（ボタン左隣）から時計回り</b>に、1枚ずつ2周配る。<span class="key">2枚まとめ配りはしない</span>。</li>
+      <li>カードはテーブルに伏せて滑らせ、<b>低く・速く・一定の力で</b>。浮かせて配らない。</li>
+      <li>配布中に<span class="key">露出（フリップ）したカードはミスディール対象</span>。手を止めて裁定（後述）。</li>
+      <li>配り終えたら残りデッキを<b>マック手前のセット位置</b>へ。</li>
+    </ol>
+    <div class="note warn"><b>ミスディールの主な条件</b>：①配牌前の枚数不足判明 ②ボタン位置の誤り ③配布順の誤り ④2枚以上の露出。アクションが進む前の発覚は<b>再配（リディール）</b>。</div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-step">STEP 3</span><h3>プリフロップ・アクション管理</h3><span class="ph-tag">第1ベッティングラウンド</span></div>
+    <ol>
+      <li>アクションは<b>UTG（BB左隣）から時計回り</b>に開始。手番を明確に指し示す。</li>
+      <li>各アクションを<span class="key">口頭で復唱・確認</span>（「コール$10」「レイズ$30まで」）。曖昧な動作は口頭確認。</li>
+      <li>ベット・レイズ額は<b>ベットライン手前にまとめて置かせ</b>、カウントしてから確定。</li>
+      <li>1周してアクションが揃い、<span class="key">全員のベット額が一致</span>したらラウンド終了を宣言。</li>
+      <li>各ベットを<b>ポットへ集約</b>。集約時に額の不一致がないか最終確認。</li>
+    </ol>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-step">STEP 4</span><h3>フロップ（バーン1＋3枚）</h3><span class="ph-tag">第2ベッティングラウンド</span></div>
+    <ol>
+      <li><b>バーンカード1枚</b>を伏せたままマック手前へ。<span class="key">バーンとボードは混ぜない・重ねない</span>。</li>
+      <li>3枚を一旦伏せてまとめて引き、<b>横一列にめくって同時公開</b>（1枚ずつチラ見せしない）。</li>
+      <li>ポストフロップは<b>ボタン左隣の生存最先席から時計回り</b>に開始。</li>
+      <li>チェック continuation は最後の席まで確認、ベットが入れば一巡して額を揃える。</li>
+    </ol>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-step">STEP 5</span><h3>ターン／リバー（各バーン1＋1枚）</h3><span class="ph-tag">第3・第4ラウンド</span></div>
+    <ol>
+      <li>各ストリートで<b>必ずバーン1枚</b>の後にボードへ1枚追加。</li>
+      <li>ボードカードはバーンの<b>右側に等間隔</b>で並べ、5枚が一直線に揃うよう配置。</li>
+      <li>オールインでアクションが残らない場合は、<span class="key">ハンドを公開させてからランナウト</span>。</li>
+      <li>複数オールインは<b>サイドポットを正確に作成</b>してからボードを進める。</li>
+    </ol>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-step">STEP 6</span><h3>ショーダウン・ハンド判定</h3><span class="ph-tag">勝敗確定</span></div>
+    <ol>
+      <li><b>ショーダウン順</b>：リバーの最終アグレッサーから時計回りに公開。全員チェックならボタンに近い席から。</li>
+      <li>ディーラーが<span class="key">役を声に出して読み上げ</span>（「フラッシュ、Aハイ」等）客観的に確定。</li>
+      <li>ホール2枚＋ボード5枚の計7枚から<b>ベストファイブ</b>を構成。自己申告ではなくカードで判定（cards speak）。</li>
+      <li>チョップは<b>キッカーまで比較</b>。端数チップはポジション基準のハウスルールで配分。</li>
+      <li>勝者確定まで<span class="key">敗者のマックもすぐには回収しない</span>（誤判定確認のため一拍置く）。</li>
+    </ol>
+    <div class="note tip"><b>裁定の原則</b>：表向きに出た手は口頭申告と異なってもカードの役で判定。伏せたままマックに触れた手は原則デッド。</div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-top"><span class="ph-step">STEP 7</span><h3>ポット授与・次ハンド準備</h3><span class="ph-tag">クロージング</span></div>
+    <ol>
+      <li><b>レーキを先に取り分け</b>てから（後述基準）、残りを勝者へプッシュ。</li>
+      <li>勝者へ渡す前に<span class="key">ポットを崩して額面を見せる</span>（目視確認できる状態に広げる）。</li>
+      <li>全カード（ボード・バーン・マック）を回収しデッキを再構成。</li>
+      <li>ボタンを進めてSTEP 1へ。<b>停滞させず一定のテンポ</b>で回す。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 2 CAUTION -->
+<section id="caution">
+  <div class="sec-head">
+    <div class="sec-num">Ⅱ</div>
+    <div><h2>ディーラー注意点</h2><p>トラブル・疑義・チップ事故を防ぐ運用上の鉄則</p></div>
+  </div>
+  <div class="cgrid">
+
+    <div class="ccard">
+      <h4>◈ チップ・ポット管理</h4>
+      <ul>
+        <li><b>ポットのチップは常に広げておく</b>。額面ごとに見やすく展開し、誰でも目視できる状態に。</li>
+        <li><b>ポット額を尋ねられても答えない</b>（ノーリミット）。「ご自身でご確認ください」と返し、<span class="hl">カウント・宣言しない</span>。</li>
+        <li>各ベットは<b>一旦手前に置かせて確認</b>してからポットへ集約。先に混ぜない。</li>
+        <li>オールイン額は<span class="hl">必ず声に出してカウント</span>し対象額を明示。</li>
+        <li>サイドポットは<b>メイン／サイドを物理的に分けて</b>配置し対象者を取り違えない。</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <h4>♤ カード管理</h4>
+      <ul>
+        <li><b>ボードとバーンは絶対に重ねない</b>。バーンは専用位置へ。</li>
+        <li>デッキ・ボトムカードを<b>露出させない</b>。配布中も伏せて低く滑らせる。</li>
+        <li>フロップ3枚は<b>同時公開</b>。先読みさせない。</li>
+        <li>露出カードが出たら<span class="hl">手を止め申告</span>してから裁定。独断で配り直さない。</li>
+        <li>マックに触れたカードは戻さない。<b>デッドはデッド</b>。</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <h4>⟳ アクション・進行管理</h4>
+      <ul>
+        <li><b>手番を明示</b>し、アウトオブターンを誘発させない。</li>
+        <li>すべてのアクションを<b>復唱・確認</b>。無言ベットは口頭確認。</li>
+        <li><span class="hl">ストリングベット（分割追加）を許さない</span>。一動作で出させるか額を先に宣言させる。</li>
+        <li>レイズ額が<b>最低額に満たない</b>場合は受理可否を裁定（後述）。</li>
+        <li>長考には<b>タイム宣言</b>。迷う裁定は<b>独断で進めずフロアを呼ぶ</b>。</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <h4>¥ 金銭・チップ授受</h4>
+      <ul>
+        <li>持ち込み・両替・追加バイインの<b>履歴を明確化</b>（卓の運用に従う）。</li>
+        <li><span class="hl">プレイヤー間のチップ直接授受（チップダンピング）を防止</span>。盤外移動を見逃さない。</li>
+        <li>テーブルから出したチップは原則<b>場に戻せない</b>（テーブルステークス）。</li>
+        <li>レーキは<b>規定どおり正確に</b>。取り過ぎ・取り忘れをしない。</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <h4>⊘ 中立性・態度</h4>
+      <ul>
+        <li><b>プレイの助言・示唆をしない</b>。「降りた方が」等は厳禁。</li>
+        <li>役の有利不利・確率について<b>聞かれても答えない</b>。</li>
+        <li>特定プレイヤーへの<b>表情・反応の偏り</b>を出さず常に等距離。</li>
+        <li>常連・高額プレイヤーにも<b>裁定基準を一律適用</b>。</li>
+      </ul>
+    </div>
+
+    <div class="ccard">
+      <h4>☂ セキュリティ・事故防止</h4>
+      <ul>
+        <li>テーブル上に<b>常に手を見せ</b>不自然な動作をしない。</li>
+        <li>カード・チップの<b>テーブル外への持ち出しを監視</b>。</li>
+        <li>カードを置きっぱなしの<b>離席に注意喚起</b>。</li>
+        <li>疑義・苦情が出たら<span class="hl">ハンドを停止</span>し進行を凍結してから対応。</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- 3 RULING -->
+<section id="ruling">
+  <div class="sec-head">
+    <div class="sec-num">Ⅲ</div>
+    <div><h2>プレイヤーマナー裁定一覧</h2><p>ディーラーが注意・裁定を取るべきマナー違反と対応の標準</p></div>
+  </div>
+  <div class="tbl-scroll">
+    <table>
+      <thead>
+        <tr><th style="min-width:150px">状況・マナー違反</th><th style="min-width:230px">内容</th><th style="min-width:260px">ディーラーの裁定・対応</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ストリングベット<span class="term">String Bet</span></td><td>チップを一度の動作で出さず継ぎ足してベット／レイズする行為。</td><td><b>最初に出した額のみ有効</b>。継ぎ足し分は戻させる。事前に額を口頭宣言していれば宣言額が有効。「一度に出すか、額を先に言ってください」と案内。</td></tr>
+        <tr><td>アクション順違反<span class="term">Out of Turn</span></td><td>自分の手番でないのにアクションしてしまう。</td><td>原則<span class="verdict">先行アクションは保留</span>。手番が回ったとき前段に変化がなければ拘束、変化があれば任意のアクション可。注意喚起する。</td></tr>
+        <tr><td>口頭宣言の拘束<span class="term">Verbal is Binding</span></td><td>手番中に「コール」「レイズ」等を声に出した／額を宣言した。</td><td><b>手番中の明確な口頭宣言は拘束力を持つ</b>。撤回不可。チップ未投入でも宣言額を履行させる。</td></tr>
+        <tr><td>最低レイズ未満<span class="term">Incomplete Raise</span></td><td>レイズ額が直前レイズ幅の最低額に達していない。</td><td>オールインでない限り<b>正規額までの増額を求める</b>かコール扱いに訂正。オールイン時の再レイズ権の有無は卓ルールで裁定。</td></tr>
+        <tr><td>スプラッシュ・ザ・ポット<span class="term">Splash the Pot</span></td><td>チップをポットへ直接投げ入れ額が確認不能になる。</td><td><span class="verdict">禁止</span>。ベットは自分の前に整然と置かせる。額不明時は本人とテーブルで確認のうえ確定。</td></tr>
+        <tr><td>カードのマック（誤放棄）<span class="term">Mucked Hand</span></td><td>降りていないのに伏せたままマックへ送る／触れる。</td><td>原則<span class="verdict">そのハンドはデッド</span>。識別不能になれば権利消失。</td></tr>
+        <tr><td>カード露出<span class="term">Exposed Card</span></td><td>ホールカードを意図的／不意に他者へ見せる。</td><td>故意の露出は<b>注意・警告</b>。配布段階のディーラー起因の露出は所定手順で処理。プレイ中の自己露出は本人責任。</td></tr>
+        <tr><td>スローロール<span class="term">Slow Roll</span></td><td>勝ち確定なのにわざとゆっくり見せて相手を焦らす。</td><td>マナー違反として<b>注意</b>。<span class="ok">速やかな公開</span>を促す。常習は責任者へ報告。</td></tr>
+        <tr><td>ワンプレイヤー・パーハンド<span class="term">One Player to a Hand</span></td><td>第三者に相談する／助言を受ける。</td><td><span class="verdict">禁止</span>。進行中の相談・コーチング、観戦者の口出しを制止。</td></tr>
+        <tr><td>共通言語<span class="term">English Only</span></td><td>進行中、他者が理解できない言語でハンドについて会話。</td><td>テーブルで<b>共通言語の使用を促す</b>。ハンドに関わる会話は特に制止。</td></tr>
+        <tr><td>曖昧動作</td><td>手の動き・チップ移動がチェックかベットか判別できない。</td><td><b>口頭確認で意図を確定</b>。テーブルを叩く＝チェックを明確に。疑義時はフロア裁定。</td></tr>
+        <tr><td>カード場外移動</td><td>ホールカードをテーブル外へ持ち出す／高く持ち上げる。</td><td><b>カードは常にテーブル上</b>で扱わせる。持ち出しは即制止。</td></tr>
+        <tr><td>アングルシュート<span class="term">Angle Shooting</span></td><td>ルールの隙を突き相手を誤認させる行為。</td><td>意図的なら<span class="verdict">強く注意</span>し状況を凍結してフロア裁定。再発時は厳格化。</td></tr>
+        <tr><td>時間超過（長考）</td><td>過度な長考で進行を著しく停滞させる。</td><td>他プレイヤーまたはディーラー判断で<b>タイム（クロック）宣言</b>。時間内に行動なければフォールド扱い。</td></tr>
+        <tr><td>チップダンピング<span class="term">Chip Dumping</span></td><td>特定相手へチップを移す不自然なプレイ・授受。</td><td><span class="verdict">監視・制止</span>。盤外での直接授受は不可。疑わしければ責任者へ即報告。</td></tr>
+        <tr><td>ショーダウン申告誤り</td><td>役を誤って申告する／見せ渋る。</td><td><b>カードが示す役で判定</b>（cards speak）。開かれた手は申告と異なっても正しい役で裁定。</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note tip" style="margin-top:16px"><b>共通原則</b>：迷ったら独断で進めず<b>ハンドを止めてフロア（責任者）を呼ぶ</b>。裁定は誰にも一律。注意は淡々と、テーブル全体に基準が見える形で行う。</div>
+</section>
+
+<!-- 4 RAKE -->
+<section id="rake">
+  <div class="sec-head">
+    <div class="sec-num">Ⅳ</div>
+    <div><h2>レーキ・授受基準（million）</h2><p>店舗の通常卓・ハイレート卓のレート／レーキ運用</p></div>
+  </div>
+  <div class="rakebox">
+    <div class="rake">
+      <div class="rt">通常ポーカー（全卓）</div>
+      <div class="r-row"><span>SB / BB</span><span>$5 / $10</span></div>
+      <div class="r-row"><span>レーキ率</span><span class="em">10%（切上げ）</span></div>
+      <div class="r-row"><span>キャップ</span><span class="em">なし</span></div>
+      <div class="r-row"><span>最小デノミ</span><span>$5</span></div>
+    </div>
+    <div class="rake">
+      <div class="rt">ハイレートポーカー</div>
+      <div class="r-row"><span>SB / BB</span><span>$10 / $20</span></div>
+      <div class="r-row"><span>レーキ率</span><span class="em">5%（切上げ）</span></div>
+      <div class="r-row"><span>キャップ</span><span class="em">$100</span></div>
+      <div class="r-row"><span>最小デノミ</span><span>$5</span></div>
+    </div>
+  </div>
+
+  <div class="phase" style="margin-top:14px">
+    <div class="ph-top"><span class="ph-step">RAKE</span><h3>レーキ取り扱いの手順</h3></div>
+    <ol>
+      <li>ポット確定後、<b>勝者へプッシュする前にレーキを取り分ける</b>。</li>
+      <li>レーキ額は<span class="key">最小デノミ$5・切上げ</span>で計算（例：算出43点 → 45点）。</li>
+      <li>通常卓は<b>キャップなし</b>でレーキ率10%をそのまま適用。</li>
+      <li>ハイレート卓は<b>$100に達したらそれ以上取らない</b>（上限$100）。</li>
+      <li>取り分けたレーキは<b>所定位置に明確に分けて</b>置き、ポットと混同しない。</li>
+    </ol>
+    <div class="note tip"><b>計算例（通常卓・10%）</b>：ポット$430 → レーキ$43 → 最小デノミ$5・切上げで<b>$45</b>。キャップなしのため率どおり徴収。</div>
+  </div>
+</section>
+
+<!-- 5 QUICK -->
+<section id="quick">
+  <div class="sec-head">
+    <div class="sec-num">Ⅴ</div>
+    <div><h2>早見：禁止・徹底事項</h2><p>迷ったときに立ち返る要点</p></div>
+  </div>
+  <div class="cgrid">
+    <div class="ccard">
+      <h4 style="color:var(--red);border-bottom-color:var(--red-l)">✕ やってはいけない</h4>
+      <ul>
+        <li><span class="hl">ポット額を答える</span>（ノーリミットでは厳禁）</li>
+        <li><span class="hl">プレイへの助言・確率の示唆</span></li>
+        <li>ポットを<span class="hl">山積みにしたまま</span>放置</li>
+        <li>ボードとバーンを<span class="hl">重ねる・混ぜる</span></li>
+        <li>フロップを<span class="hl">1枚ずつめくる</span></li>
+        <li>シャッフル手順の<span class="hl">省略</span></li>
+        <li>裁定を<span class="hl">独断で強行</span></li>
+        <li>常連だけ<span class="hl">基準を緩める</span></li>
+      </ul>
+    </div>
+    <div class="ccard">
+      <h4>✓ 常に徹底する</h4>
+      <ul>
+        <li>ポットのチップは<b>広げて見せる</b></li>
+        <li>各ストリートで<b>必ずバーン1枚</b></li>
+        <li>アクションは<b>復唱・確認</b></li>
+        <li>手番を<b>明示</b>する</li>
+        <li>手は常に<b>テーブル上に見せる</b></li>
+        <li>ハンドは<b>cards speak</b>で判定</li>
+        <li>授与前に<b>ポットを崩して額面確認</b></li>
+        <li>迷ったら<b>フロアを呼ぶ</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="crest">million</div>
+  <p>テキサスホールデム ディーラー進行・裁定マニュアル ／ 教育・裁定統一用内部資料</p>
+  <p style="margin-top:4px">※レート・運用は店舗の最新ハウスルールに準拠。裁定で迷う場合は必ず責任者へ確認。</p>
+</footer>
+
+</body>
+</html>
