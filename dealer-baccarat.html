@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>バカラディーラーマニュアル | MILLION</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f0e8; color: #1a1a1a; font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif; min-height: 100vh; }
+  .bg-grid { position: fixed; inset: 0; z-index: 0; background-image: radial-gradient(circle, #c8a04466 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; }
+  .page-nav { position: sticky; top: 0; z-index: 100; background: rgba(255,248,232,0.97); backdrop-filter: blur(8px); border-bottom: 1.5px solid #e0c880; box-shadow: 0 2px 12px rgba(180,140,60,0.10); }
+  .page-nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 16px; display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+  .nav-brand { font-size: 13px; font-weight: 900; letter-spacing: 3px; color: #7a5200; padding: 12px 12px 12px 4px; border-right: 1.5px solid #e0c88055; margin-right: 4px; white-space: nowrap; }
+  .nav-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: #5a4010; text-decoration: none; padding: 10px 12px; border-radius: 6px; transition: background 0.15s; white-space: nowrap; }
+  .nav-link:hover { background: #fff4d0; color: #7a3800; }
+  .nav-link.active { background: linear-gradient(135deg, #c88820, #e8a820); color: #fff; box-shadow: 0 2px 8px rgba(200,136,32,0.30); }
+  .wrapper { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 36px 24px 60px; }
+  .header { text-align: center; margin-bottom: 40px; }
+  .header-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 4px; color: #7a5a10; background: #fff8e8; border: 1.5px solid #c8a044; padding: 5px 18px; border-radius: 3px; margin-bottom: 14px; }
+  .header h1 { font-size: 34px; font-weight: 900; letter-spacing: 5px; color: #1a1a1a; margin-bottom: 6px; }
+  .header h1 span { background: linear-gradient(135deg, #c88820 0%, #f0c840 50%, #c88820 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .header p { font-size: 12px; color: #8a7a60; letter-spacing: 3px; font-weight: 500; }
+  .gold-divider { display: flex; align-items: center; gap: 14px; margin: 32px 0 18px; }
+  .gold-divider::before, .gold-divider::after { content: ''; flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, #c8a044, transparent); }
+  .gold-divider span { font-size: 11px; font-weight: 700; color: #8a6820; letter-spacing: 3px; white-space: nowrap; background: #fff4d8; padding: 3px 14px; border-radius: 20px; border: 1px solid #c8a04466; }
+  .section-title { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #5a4010; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; border-left: 4px solid #c8a044; padding-left: 12px; }
+  .game-section { margin: 18px 0; }
+  .game-section-title { font-size: 13px; font-weight: 700; color: #5a4010; background: #fff8e8; border: 1px solid #e0c88044; padding: 8px 14px; border-radius: 6px; margin-bottom: 10px; }
+  .game-section ul { list-style: none; padding: 0; }
+  .game-section li { position: relative; padding: 6px 0 6px 20px; font-size: 13px; color: #3a2a10; border-bottom: 1px solid #f0e8d844; line-height: 1.7; }
+  .game-section li::before { content: '\25B8'; position: absolute; left: 4px; color: #c8a044; font-size: 10px; top: 8px; }
+  .shoe-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff4d0; border: 1px solid #e0c880; border-radius: 6px; padding: 6px 12px; font-size: 12px; color: #5a4010; font-weight: 600; }
+  .step-flow { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .step-item { display: flex; align-items: flex-start; gap: 12px; }
+  .step-num { width: 28px; height: 28px; min-width: 28px; background: linear-gradient(135deg, #c88820, #e8a820); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; flex-shrink: 0; margin-top: 2px; }
+  .step-text { font-size: 13px; color: #3a2a10; line-height: 1.8; padding: 4px 0; border-bottom: 1px solid #f0e8d855; flex: 1; }
+  .info-box { background: #f0f8ff; border: 1px solid #a0c8e8; border-left: 4px solid #4090c8; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #1a4060; line-height: 1.8; margin: 10px 0; }
+  .info-box strong { display: block; margin-bottom: 4px; font-size: 13px; }
+  .warn-box { background: #fff4f0; border: 1px solid #f0b090; border-left: 4px solid #e05020; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #5a1a00; line-height: 1.8; margin: 10px 0; }
+  .warn-box strong { display: block; margin-bottom: 4px; font-size: 13px; }
+  .caution-box { background: #fffbe8; border: 1px solid #e8d840; border-left: 4px solid #c8a000; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #4a3800; line-height: 1.8; margin: 10px 0; }
+  .caution-box strong { display: block; margin-bottom: 4px; font-size: 13px; }
+  .dealer-card { background: #ffffff; border: 1.5px solid #e0c88055; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 14px rgba(180,140,60,0.09); margin-bottom: 28px; }
+  .dealer-card-header { padding: 20px 22px; display: flex; align-items: center; gap: 14px; }
+  .dealer-card-icon { font-size: 30px; line-height: 1; }
+  .dealer-card-title { font-size: 20px; font-weight: 900; letter-spacing: 2px; }
+  .dealer-card-subtitle { font-size: 12px; font-weight: 500; opacity: 0.80; margin-top: 3px; }
+  .dealer-card-body { padding: 0 22px 22px; }
+  .dealer-card.baccarat .dealer-card-header { background: linear-gradient(135deg,#1a3a5c,#0d2540); }
+  .dealer-card.baccarat .dealer-card-title { color: #90d8ff; }
+  .dealer-card.baccarat .dealer-card-subtitle { color: #6090b8; }
+  .dealer-card.blackjack .dealer-card-header { background: linear-gradient(135deg,#1a3a20,#0d2510); }
+  .dealer-card.blackjack .dealer-card-title { color: #80e890; }
+  .dealer-card.blackjack .dealer-card-subtitle { color: #508858; }
+  .dealer-card.holdem .dealer-card-header { background: linear-gradient(135deg,#3a1a10,#250d00); }
+  .dealer-card.holdem .dealer-card-title { color: #ffa060; }
+  .dealer-card.holdem .dealer-card-subtitle { color: #a06040; }
+  .dealer-card.plo .dealer-card-header { background: linear-gradient(135deg,#2a1a3a,#180d28); }
+  .dealer-card.plo .dealer-card-title { color: #c8a0ff; }
+  .dealer-card.plo .dealer-card-subtitle { color: #8868b8; }
+  .chip-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .chip-table th { font-size: 11px; font-weight: 700; color: #7a5a10; padding: 9px 10px; text-align: left; background: #fffbf0; border-bottom: 2px solid #e8d49055; }
+  .chip-table td { padding: 9px 10px; border-bottom: 1px solid #f0e8d844; color: #2a2a2a; }
+  .chip-table tr:hover td { background: #fffdf8; }
+  .rule-item { background: #ffffff; border-left: 4px solid #c8a044; border-radius: 0 8px 8px 0; padding: 14px 16px; font-size: 13px; color: #3a3028; line-height: 1.7; box-shadow: 0 1px 6px rgba(180,140,60,0.07); }
+  .rule-item strong { color: #7a5200; display: block; margin-bottom: 4px; font-size: 12px; font-weight: 700; }
+  .rule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; margin-top: 8px; }
+  .footer-note { text-align: center; font-size: 11px; color: #a09080; letter-spacing: 3px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e0d0b044; }
+  @media (max-width: 600px) { .nav-link { font-size: 11px; padding: 8px 6px; } .header h1 { font-size: 26px; } .dealer-card-body { padding: 0 14px 14px; } }
+
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <div class="nav-brand">MILLION</div>
+    <a class="nav-link" href="index.html">&#127968; システム概要</a>
+    <a class="nav-link" href="dealer-texas.html">&#9824;&#65039; テキサスディーラー</a>
+    <a class="nav-link active" href="dealer-baccarat.html">&#127044; バカラディーラー</a>
+    <a class="nav-link" href="dealer-blackjack.html">&#127137; ブラックジャックディーラー</a>
+    <a class="nav-link" href="staff-rules.html">&#128203; スタッフルール</a>
+    <a class="nav-link" href="staff.html">&#128101; スタッフ業務一覧</a>
+  </div>
+</nav>
+<div class="wrapper">
+
+  <div class="header">
+    <div class="header-badge">DEALER MANUAL</div>
+    <h1><span>バカラディーラー</span></h1>
+    <p>BACCARAT &mdash; DEALING GUIDE &amp; RULES</p>
+  </div>
+  <div class="dealer-card baccarat">
+    <div class="dealer-card-header">
+      <div class="dealer-card-icon">&#127044;</div>
+      <div><div class="dealer-card-title">BACCARAT</div><div class="dealer-card-subtitle">バンカー vs プレイヤー &mdash; 9に近い方が勝ち</div></div>
+    </div>
+    <div class="dealer-card-body">
+      <div style="margin:14px 0 6px;display:flex;gap:10px;flex-wrap:wrap">
+        <div class="shoe-badge">&#128096; 6デッキ | カットカード後ろから <strong style="color:#c8500a">15枚目</strong></div>
+        <div class="shoe-badge">&#128176; メイン MIN $10 &mdash; MAX $2,000</div>
+        <div class="shoe-badge">&#127919; サイドベット MIN $10 &mdash; MAX $100</div>
+      </div>
+      <div class="gold-divider"><span>BASIC RULES</span></div>
+      <div class="game-section">
+        <div class="game-section-title">&#128218; 基本ルール</div>
+        <ul>
+          <li>プレイヤーとバンカーにそれぞれ2枚ずつカードを配る</li>
+          <li>カードの合計値の1の位が9に近い方が勝ち（タイもあり）</li>
+          <li>絵札・10は0点、A は1点、2〜9はそのままの点数</li>
+          <li>合計が10以上になった場合は10を引いた値（例：15→5）</li>
+          <li>ナチュラル（最初の2枚で8または9）が出た場合はドローなしで勝敗確定</li>
+          <li>プレイヤーが5以下の場合は必ず3枚目を引く（ナチュラル8・9を除く）</li>
+          <li>バンカーの3枚目ドローはプレイヤーの3枚目によって変動（下記参照）</li>
+        </ul>
+      </div>
+      <div class="gold-divider"><span>BANKER THIRD CARD</span></div>
+      <div class="game-section">
+        <div class="game-section-title">&#127970; バンカーサードカードルール</div>
+        <div style="overflow-x:auto">
+          <table class="chip-table">
+            <thead><tr><th>バンカー合計</th><th>P2枚スタンド</th><th>P3枚目:0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr></thead>
+            <tbody>
+              <tr><td>0〜2</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td></tr>
+              <tr><td>3</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#c04020;font-weight:700">スタンド</td></tr>
+              <tr><td>4</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#c04020;font-weight:700">スタンド</td></tr>
+              <tr><td>5</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#c04020;font-weight:700">スタンド</td></tr>
+              <tr><td>6</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#c04020;font-weight:700">スタンド</td><td style="color:#2a8030;font-weight:700">ドロー</td><td style="color:#2a8030;font-weight:700">ドロー</td></tr>
+              <tr><td>7</td><td colspan="9" style="color:#c04020;font-weight:700;text-align:center">常にスタンド</td></tr>
+              <tr><td>8〜9</td><td colspan="9" style="color:#7a5200;font-weight:700;text-align:center">ナチュラル &mdash; ドローなし</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="info-box" style="margin-top:10px"><strong>ℹ️ プレイヤールール早見</strong>0〜5：必ずドロー　｜　6〜7：スタンド　｜　8〜9：ナチュラル</div>
+      </div>
+      <div class="gold-divider"><span>SIDE BETS</span></div>
+      <div class="game-section">
+        <div class="game-section-title">&#127919; サイドベット一覧</div>
+        <div class="rule-grid">
+          <div class="rule-item"><strong>タイ（TIE）｜ 8:1</strong>プレイヤーとバンカーの合計が同じ点数で引き分け。</div>
+          <div class="rule-item"><strong>PAIR（ペア）｜ 11:1</strong>P側またはB側の最初の2枚が同じ数字のペア。P-PAIR / B-PAIR それぞれ独立。</div>
+          <div class="rule-item"><strong>PERFECT PAIR｜ 25:1</strong>同じ数字かつ同じスートのペア（例：♠K＋♠K）。</div>
+          <div class="rule-item"><strong>SUPER 6｜ 12:1</strong>バンカーが合計6で勝利した場合に成立。ノーコミッションと連動。</div>
+        </div>
+      </div>
+      <div class="gold-divider"><span>NO COMMISSION RULE</span></div>
+      <div class="game-section">
+        <div class="game-section-title">&#128161; ノーコミッションルール</div>
+        <ul>
+          <li>通常バカラはバンカー勝利時に配当から <strong>5%のコミッション</strong>を徴収する</li>
+          <li>ノーコミッションでは徴収しない代わりに特例がある</li>
+          <li><strong>バンカーが合計6で勝利した場合のみ配当は 1:2（半額）</strong></li>
+          <li>それ以外のバンカー勝利・プレイヤー勝利・タイは通常と同じ配当</li>
+        </ul>
+        <div class="info-box"><strong>ℹ️ ペイアウト早見（ノーコミッション）</strong>プレイヤー勝利：1:1 ｜ バンカー勝利（6以外）：1:1 ｜ バンカー勝利（合計6）：1:2 ｜ タイ：8:1</div>
+      </div>
+      <div class="gold-divider"><span>DEALING PROCEDURE</span></div>
+      <div class="game-section">
+        <div class="game-section-title">&#127183; ディーリング手順</div>
+        <div class="step-flow">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">シューターにカードをセット。カットカードを後ろから<strong>15枚目</strong>に挿入しシャッフル後にロード</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text"><strong>オープニングゲーム</strong>：1枚目を引き、その数字分のカードをディスカードシューに廃棄</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">P→B→P→B の順に1枚ずつスライドして配る（スクープせずスライド）</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">プレイヤー2枚をオープン、合計点数をアナウンス</div></div>
+          <div class="step-item"><div class="step-num">5</div><div class="step-text">バンカー2枚をオープン、合計点数をアナウンス。ナチュラルなら即時勝敗確定</div></div>
+          <div class="step-item"><div class="step-num">6</div><div class="step-text">サードカードルールに従い必要に応じてP・Bに3枚目を引く</div></div>
+          <div class="step-item"><div class="step-num">7</div><div class="step-text">勝敗をアナウンス。サイドベット → メインベットの順でペイアウト</div></div>
+          <div class="step-item"><div class="step-num">8</div><div class="step-text">カットカードが出たらそのシュー終了後にリシャッフル</div></div>
+        </div>
+      </div>
+      <div class="gold-divider"><span>CAUTIONS</span></div>
+      <div class="caution-box"><strong>⚠️ カット位置厳守</strong>カットカードは必ず後ろから<strong>15枚目</strong>に挿入すること。</div>
+      <div class="warn-box"><strong>🚫 スクープ禁止</strong>カードはスライドして配ること。スクープは不正操作と見なされる可能性があるため厳禁。</div>
+      <div class="warn-box"><strong>🚫 ノーコミッション時バンカー6の支払い</strong>配当は必ず<strong>1:2（半額）</strong>。通常の1:1で払わないこと。</div>
+      <div class="info-box"><strong>ℹ️ サイドベット処理順</strong>PERFECT PAIR → PAIR → SUPER6 → TIE → メインベットの順</div>
+    </div>
+  </div>
+  <div class="footer-note">MILLION &mdash; BACCARAT DEALER MANUAL · KAGOSHIMA</div>
+
+</div>
+</body>
+</html>
