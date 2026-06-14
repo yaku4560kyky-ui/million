@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ブラックジャックディーラーマニュアル | MILLION</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f0e8; color: #1a1a1a; font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif; min-height: 100vh; }
+  .bg-grid { position: fixed; inset: 0; z-index: 0; background-image: radial-gradient(circle, #c8a04466 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; }
+  .page-nav { position: sticky; top: 0; z-index: 100; background: rgba(255,248,232,0.97); backdrop-filter: blur(8px); border-bottom: 1.5px solid #e0c880; box-shadow: 0 2px 12px rgba(180,140,60,0.10); }
+  .page-nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 16px; display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+  .nav-brand { font-size: 13px; font-weight: 900; letter-spacing: 3px; color: #7a5200; padding: 12px 12px 12px 4px; border-right: 1.5px solid #e0c88055; margin-right: 4px; white-space: nowrap; }
+  .nav-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: #5a4010; text-decoration: none; padding: 10px 12px; border-radius: 6px; transition: background 0.15s; white-space: nowrap; }
+  .nav-link:hover { background: #fff4d0; color: #7a3800; }
+  .nav-link.active { background: linear-gradient(135deg, #c88820, #e8a820); color: #fff; box-shadow: 0 2px 8px rgba(200,136,32,0.30); }
+  .wrapper { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 36px 24px 60px; }
+  .header { text-align: center; margin-bottom: 40px; }
+  .header-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 4px; color: #7a5a10; background: #fff8e8; border: 1.5px solid #c8a044; padding: 5px 18px; border-radius: 3px; margin-bottom: 14px; }
+  .header h1 { font-size: 34px; font-weight: 900; letter-spacing: 5px; color: #1a1a1a; margin-bottom: 6px; }
+  .header h1 span { background: linear-gradient(135deg, #c88820 0%, #f0c840 50%, #c88820 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .header p { font-size: 12px; color: #8a7a60; letter-spacing: 3px; font-weight: 500; }
+  .gold-divider { display: flex; align-items: center; gap: 14px; margin: 32px 0 18px; }
+  .gold-divider::before, .gold-divider::after { content: ''; flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, #c8a044, transparent); }
+  .gold-divider span { font-size: 11px; font-weight: 700; color: #8a6820; letter-spacing: 3px; white-space: nowrap; background: #fff4d8; padding: 3px 14px; border-radius: 20px; border: 1px solid #c8a04466; }
+  .section-title { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #5a4010; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; border-left: 4px solid #c8a044; padding-left: 12px; }
+  .game-section { margin: 18px 0; }
+  .game-section-title { font-size: 13px; font-weight: 700; color: #5a4010; background: #fff8e8; border: 1px solid #e0c88044; padding: 8px 14px; border-radius: 6px; margin-bottom: 10px; }
+  .game-section ul { list-style: none; padding: 0; }
+  .game-section li { position: relative; padding: 6px 0 6px 20px; font-size: 13px; color: #3a2a10; border-bottom: 1px solid #f0e8d844; line-height: 1.7; }
+  .game-section li::before { content: '\25B8'; position: absolute; left: 4px; color: #c8a044; font-size: 10px; top: 8px; }
+  .shoe-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff4d0; border: 1px solid #e0c880; border-radius: 6px; padding: 6px 12px; font-size: 12px; color: #5a4010; font-weight: 600; }
+  .step-flow { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .step-item { display: flex; align-items: flex-start; gap: 12px; }
+  .step-num { width: 28px; height: 28px; min-width: 28px; background: linear-gradient(135deg, #c88820, #e8a820); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; flex-shrink: 0; margin-top: 2px; }
+  .step-text { font-size: 13px; color: #3a2a10; line-height: 1.8; padding: 4px 0; border-bottom: 1px solid #f0e8d855; flex: 1; }
+  .info-box { background: #f0f8ff; border: 1px solid #a0c8e8; border-left: 4px solid #4090c8; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #1a4060; line-height: 1.8; margin: 10px 0; }
+  .info-box strong { display: block; margin-bottom: 4px; font-size: 13px; }
+  .warn-box { background: #fff4f0; border: 1px solid #f0b090; border-left: 4px solid #e05020; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #5a1a00; line-height: 1.8; margin: 10px 0; }
+  .warn-box strong { display: block; margin-bottom: 4px; font-size: 13px; }
+  .caution-box { background: #fffbe8; border: 1px solid #e8d840; border-left: 4px solid #c8a000; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #4a3800; line-height: 1.8; margin: 10px 0; }
+  .caution-box strong { display: block; margin-bottom: 4px; font-size: 13px; }
+  .dealer-card { background: #ffffff; border: 1.5px solid #e0c88055; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 14px rgba(180,140,60,0.09); margin-bottom: 28px; }
+  .dealer-card-header { padding: 20px 22px; display: flex; align-items: center; gap: 14px; }
+  .dealer-card-icon { font-size: 30px; line-height: 1; }
+  .dealer-card-title { font-size: 20px; font-weight: 900; letter-spacing: 2px; }
+  .dealer-card-subtitle { font-size: 12px; font-weight: 500; opacity: 0.80; margin-top: 3px; }
+  .dealer-card-body { padding: 0 22px 22px; }
+  .dealer-card.baccarat .dealer-card-header { background: linear-gradient(135deg,#1a3a5c,#0d2540); }
+  .dealer-card.baccarat .dealer-card-title { color: #90d8ff; }
+  .dealer-card.baccarat .dealer-card-subtitle { color: #6090b8; }
+  .dealer-card.blackjack .dealer-card-header { background: linear-gradient(135deg,#1a3a20,#0d2510); }
+  .dealer-card.blackjack .dealer-card-title { color: #80e890; }
+  .dealer-card.blackjack .dealer-card-subtitle { color: #508858; }
+  .dealer-card.holdem .dealer-card-header { background: linear-gradient(135deg,#3a1a10,#250d00); }
+  .dealer-card.holdem .dealer-card-title { color: #ffa060; }
+  .dealer-card.holdem .dealer-card-subtitle { color: #a06040; }
+  .dealer-card.plo .dealer-card-header { background: linear-gradient(135deg,#2a1a3a,#180d28); }
+  .dealer-card.plo .dealer-card-title { color: #c8a0ff; }
+  .dealer-card.plo .dealer-card-subtitle { color: #8868b8; }
+  .chip-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .chip-table th { font-size: 11px; font-weight: 700; color: #7a5a10; padding: 9px 10px; text-align: left; background: #fffbf0; border-bottom: 2px solid #e8d49055; }
+  .chip-table td { padding: 9px 10px; border-bottom: 1px solid #f0e8d844; color: #2a2a2a; }
+  .chip-table tr:hover td { background: #fffdf8; }
+  .rule-item { background: #ffffff; border-left: 4px solid #c8a044; border-radius: 0 8px 8px 0; padding: 14px 16px; font-size: 13px; color: #3a3028; line-height: 1.7; box-shadow: 0 1px 6px rgba(180,140,60,0.07); }
+  .rule-item strong { color: #7a5200; display: block; margin-bottom: 4px; font-size: 12px; font-weight: 700; }
+  .rule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; margin-top: 8px; }
+  .footer-note { text-align: center; font-size: 11px; color: #a09080; letter-spacing: 3px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e0d0b044; }
+  @media (max-width: 600px) { .nav-link { font-size: 11px; padding: 8px 6px; } .header h1 { font-size: 26px; } .dealer-card-body { padding: 0 14px 14px; } }
+
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <div class="nav-brand">MILLION</div>
+    <a class="nav-link" href="index.html">&#127968; システム概要</a>
+    <a class="nav-link" href="dealer-texas.html">&#9824;&#65039; テキサスディーラー</a>
+    <a class="nav-link" href="dealer-baccarat.html">&#127044; バカラディーラー</a>
+    <a class="nav-link active" href="dealer-blackjack.html">&#127137; ブラックジャックディーラー</a>
+    <a class="nav-link" href="staff-rules.html">&#128203; スタッフルール</a>
+    <a class="nav-link" href="staff.html">&#128101; スタッフ業務一覧</a>
+  </div>
+</nav>
+<div class="wrapper">
+
+  <div class="header">
+    <div class="header-badge">DEALER MANUAL</div>
+    <h1><span>ブラックジャックディーラー</span></h1>
+    <p>BLACKJACK &mdash; DEALING GUIDE &amp; RULES</p>
+  </div>
+  <div class="dealer-card blackjack">
+    <div class="dealer-card-header">
+      <div class="dealer-card-icon">&#127137;</div>
+      <div><div class="dealer-card-title">BLACKJACK</div><div class="dealer-card-subtitle">21を超えずにディーラーより21に近づける</div></div>
+    </div>
+    <div class="dealer-card-body">
+      <div style="margin:14px 0 6px;display:flex;gap:10px;flex-wrap:wrap">
+        <div class="shoe-badge">&#128096; 6デッキ | カットカード後ろから <strong style="color:#c8500a">1.5〜2デッキ分</strong>（約78〜104枚）</div>
+        <div class="shoe-badge">&#128176; メイン MIN $10 &mdash; MAX $1,000</div>
+        <div class="shoe-badge">&#127919; サイドベット MIN $5 &mdash; MAX $50</div>
+      </div>
+      <div class="info-box" style="margin-top:12px">
+        <strong>&#128204; Million 固有ルール</strong>
+        ・ソフト17ルール <strong>なし</strong>（ディーラーはソフト17でも必ずスタンド）<br>
+        ・ディーラーへの最初の配布は <strong>1枚のみ</strong>（ホールカードなし方式 / ヨーロピアンスタイル）<br>
+        ・インシュランス・イーブンマネーは<strong>提供しない</strong>
+      </div>
+      <div class="gold-divider"><span>BASIC RULES</span></div>
+      <div class="game-section">
+        <div class="game-section-title">&#128218; 基本ルール</div>
+        <ul>
+          <li>絵札・10は10点、Aは1点または11点（有利な方）、2〜9はそのまま</li>
+          <li>最初の2枚でAと10点カードの組み合わせがブラックジャック（配当 3:2）</li>
+          <li>21を超えるとバスト（即負け）</li>
+          <li>ディーラーは16以下で必ずヒット、17以上で必ずスタンド</li>
+          <li>ソフト17（A+6など合計17）でもスタンド（Million ルール）</li>
+          <li>スプリット：最初の2枚が同じ数字なら2手に分けられる</li>
+          <li>ダブルダウン：最初の2枚でベット倍増し1枚だけ追加ドロー</li>
+          <li>サレンダー：最初の2枚で降参しベットの半分を取り戻す（設定による）</li>
+        </ul>
+      </div>
+      <div class="gold-divider"><span>SIDE BETS</span></div>
+      <div class="game-section">
+        <div class="game-section-title">&#127919; サイドベット一覧</div>
+        <div class="rule-grid">
+          <div class="rule-item"><strong>PERFECT PAIR｜最大25:1</strong>プレイヤーの最初の2枚の組み合わせで判定。<br>パーフェクトペア（同スート・同数字）：25:1<br>カラードペア（同色・同数字）：12:1<br>ミックスペア（異色・同数字）：6:1</div>
+          <div class="rule-item"><strong>HOT 3｜最大100:1</strong>プレイヤー2枚＋ディーラーアップカード計3枚で判定。<br>777（同スート）：100:1 / 777（異スート）：20:1<br>スリーオブアカインド：4:1 / ストレートフラッシュ：20:1<br>合計21（その他）：4:1</div>
+          <div class="rule-item"><strong>BUST IT｜最大250:1</strong>ディーラーがバストしたときに成立。<br>3枚バスト：1:1 / 4枚：2:1 / 5枚：9:1<br>6枚：50:1 / 7枚以上：250:1</div>
+        </div>
+        <div class="warn-box" style="margin-top:10px"><strong>🚫 HOT3 の注意</strong>HOT3はP2枚＋ディーラーアップカード（1枚目）の3枚で判定。ディーラーの2枚目を引く前に判定・ペイアウトを行うこと。</div>
+        <div class="warn-box"><strong>🚫 BUST IT の注意</strong>BUST IT はディーラーがバストして初めて成立。ディーラーのアクションを全て終えた後に処理すること。</div>
+      </div>
+      <div class="gold-divider"><span>DEALING PROCEDURE</span></div>
+      <div class="game-section">
+        <div class="game-section-title">&#127183; ディーリング手順</div>
+        <div class="step-flow">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">シューターに6デッキをセット。カットカードを後ろから<strong>1.5〜2デッキ分</strong>の位置に挿入しロード</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text"><strong>オープニングゲーム</strong>：1枚目を引き、その数字分のカードをディスカードシューに廃棄</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">プレイヤー全員に1枚ずつ表向きで配り、最後にディーラーへ<strong>1枚</strong>表向きで配る（ホールカードなし）</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">プレイヤーに2枚目を表向きで配る（ディーラーへの2枚目はまだ配らない）</div></div>
+          <div class="step-item"><div class="step-num">5</div><div class="step-text"><strong>PERFECT PAIR・HOT3 を判定しペイアウト</strong>。プレイヤーBJも確認（即時 3:2）</div></div>
+          <div class="step-item"><div class="step-num">6</div><div class="step-text">左端のプレイヤーから順にヒット・スタンド・ダブルダウン・スプリットのアクションを処理</div></div>
+          <div class="step-item"><div class="step-num">7</div><div class="step-text">全プレイヤーのアクション完了後、ディーラーが2枚目を引きルールに従いヒット/スタンド</div></div>
+          <div class="step-item"><div class="step-num">8</div><div class="step-text">ディーラーがバストした場合は <strong>BUST IT を判定しペイアウト</strong>。その後メインベットを処理</div></div>
+          <div class="step-item"><div class="step-num">9</div><div class="step-text">勝敗判定・メインペイアウト。勝ち1:1、ブラックジャック3:2、タイはプッシュ（返金）</div></div>
+          <div class="step-item"><div class="step-num">10</div><div class="step-text">カットカードが出たらそのラウンド終了後にリシャッフル</div></div>
+        </div>
+      </div>
+      <div class="gold-divider"><span>CAUTIONS</span></div>
+      <div class="caution-box"><strong>⚠️ カット位置</strong>カットカードは後ろから1.5〜2デッキ分（約78〜104枚）の範囲内に収めること。</div>
+      <div class="warn-box"><strong>🚫 ソフト17スタンド厳守</strong>A+6（ソフト17）でもディーラーはスタンド。ヒットするのは合計16以下のみ。</div>
+      <div class="warn-box"><strong>🚫 ホールカードなし方式</strong>ディーラーへの最初の配布は1枚のみ。2枚目はプレイヤー全員のアクション後に引くこと。インシュランス・イーブンマネーは提供しない。</div>
+      <div class="info-box"><strong>ℹ️ スプリット時の注意</strong>スプリット後にAが出ても通常のヒットと同じ扱い（スプリットBJは1:1）</div>
+      <div class="info-box"><strong>ℹ️ サイドベット処理順</strong>配り終えた直後 → PERFECT PAIR判定 → HOT3判定 → メインアクション → ディーラーアクション → BUST IT判定 → メインペイアウト</div>
+    </div>
+  </div>
+  <div class="footer-note">MILLION &mdash; BLACKJACK DEALER MANUAL · KAGOSHIMA</div>
+
+</div>
+</body>
+</html>
