@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スタッフルール | MILLION</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f0e8; color: #1a1a1a; font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif; min-height: 100vh; }
+  .bg-grid { position: fixed; inset: 0; z-index: 0; background-image: radial-gradient(circle, #c8a04466 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; }
+  .page-nav { position: sticky; top: 0; z-index: 100; background: rgba(255,248,232,0.97); backdrop-filter: blur(8px); border-bottom: 1.5px solid #e0c880; box-shadow: 0 2px 12px rgba(180,140,60,0.10); }
+  .page-nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 16px; display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+  .nav-brand { font-size: 13px; font-weight: 900; letter-spacing: 3px; color: #7a5200; padding: 12px 12px 12px 4px; border-right: 1.5px solid #e0c88055; margin-right: 4px; white-space: nowrap; }
+  .nav-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: #5a4010; text-decoration: none; padding: 10px 12px; border-radius: 6px; transition: background 0.15s; white-space: nowrap; }
+  .nav-link:hover { background: #fff4d0; color: #7a3800; }
+  .nav-link.active { background: linear-gradient(135deg, #c88820, #e8a820); color: #fff; box-shadow: 0 2px 8px rgba(200,136,32,0.30); }
+  .wrapper { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 36px 24px 60px; }
+  .header { text-align: center; margin-bottom: 40px; }
+  .header-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 4px; color: #7a5a10; background: #fff8e8; border: 1.5px solid #c8a044; padding: 5px 18px; border-radius: 3px; margin-bottom: 14px; }
+  .header h1 { font-size: 34px; font-weight: 900; letter-spacing: 5px; color: #1a1a1a; margin-bottom: 6px; }
+  .header h1 span { background: linear-gradient(135deg, #c88820 0%, #f0c840 50%, #c88820 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .header p { font-size: 12px; color: #8a7a60; letter-spacing: 3px; font-weight: 500; }
+  .gold-divider { display: flex; align-items: center; gap: 14px; margin: 32px 0 18px; }
+  .gold-divider::before, .gold-divider::after { content: ''; flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, #c8a044, transparent); }
+  .gold-divider span { font-size: 11px; font-weight: 700; color: #8a6820; letter-spacing: 3px; white-space: nowrap; background: #fff4d8; padding: 3px 14px; border-radius: 20px; border: 1px solid #c8a04466; }
+  .section-title { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #5a4010; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; border-left: 4px solid #c8a044; padding-left: 12px; }
+  .game-section { margin: 18px 0; }
+  .game-section-title { font-size: 13px; font-weight: 700; color: #5a4010; background: #fff8e8; border: 1px solid #e0c88044; padding: 8px 14px; border-radius: 6px; margin-bottom: 10px; }
+  .game-section ul { list-style: none; padding: 0; }
+  .game-section li { position: relative; padding: 6px 0 6px 20px; font-size: 13px; color: #3a2a10; border-bottom: 1px solid #f0e8d844; line-height: 1.7; }
+  .game-section li::before { content: '\25B8'; position: absolute; left: 4px; color: #c8a044; font-size: 10px; top: 8px; }
+  .shoe-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff4d0; border: 1px solid #e0c880; border-radius: 6px; padding: 6px 12px; font-size: 12px; color: #5a4010; font-weight: 600; }
+  .step-flow { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+  .step-item { display: flex; align-items: flex-start; gap: 12px; }
+  .step-num { width: 28px; height: 28px; min-width: 28px; background: linear-gradient(135deg, #c88820, #e8a820); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; flex-shrink: 0; margin-top: 2px; }
+  .step-text { font-size: 13px; color: #3a2a10; line-height: 1.8; padding: 4px 0; border-bottom: 1px solid #f0e8d855; flex: 1; }
+  .info-box { background: #f0f8ff; border: 1px solid #a0c8e8; border-left: 4px solid #4090c8; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #1a4060; line-height: 1.8; margin: 10px 0; }
+  .info-box strong { display: block; margin-bottom: 4px; font-size: 13px; }
+  .warn-box { background: #fff4f0; border: 1px solid #f0b090; border-left: 4px solid #e05020; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #5a1a00; line-height: 1.8; margin: 10px 0; }
+  .warn-box strong { display: block; margin-bottom: 4px; font-size: 13px; }
+  .caution-box { background: #fffbe8; border: 1px solid #e8d840; border-left: 4px solid #c8a000; border-radius: 8px; padding: 12px 16px; font-size: 12px; color: #4a3800; line-height: 1.8; margin: 10px 0; }
+  .caution-box strong { display: block; margin-bottom: 4px; font-size: 13px; }
+  .dealer-card { background: #ffffff; border: 1.5px solid #e0c88055; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 14px rgba(180,140,60,0.09); margin-bottom: 28px; }
+  .dealer-card-header { padding: 20px 22px; display: flex; align-items: center; gap: 14px; }
+  .dealer-card-icon { font-size: 30px; line-height: 1; }
+  .dealer-card-title { font-size: 20px; font-weight: 900; letter-spacing: 2px; }
+  .dealer-card-subtitle { font-size: 12px; font-weight: 500; opacity: 0.80; margin-top: 3px; }
+  .dealer-card-body { padding: 0 22px 22px; }
+  .dealer-card.baccarat .dealer-card-header { background: linear-gradient(135deg,#1a3a5c,#0d2540); }
+  .dealer-card.baccarat .dealer-card-title { color: #90d8ff; }
+  .dealer-card.baccarat .dealer-card-subtitle { color: #6090b8; }
+  .dealer-card.blackjack .dealer-card-header { background: linear-gradient(135deg,#1a3a20,#0d2510); }
+  .dealer-card.blackjack .dealer-card-title { color: #80e890; }
+  .dealer-card.blackjack .dealer-card-subtitle { color: #508858; }
+  .dealer-card.holdem .dealer-card-header { background: linear-gradient(135deg,#3a1a10,#250d00); }
+  .dealer-card.holdem .dealer-card-title { color: #ffa060; }
+  .dealer-card.holdem .dealer-card-subtitle { color: #a06040; }
+  .dealer-card.plo .dealer-card-header { background: linear-gradient(135deg,#2a1a3a,#180d28); }
+  .dealer-card.plo .dealer-card-title { color: #c8a0ff; }
+  .dealer-card.plo .dealer-card-subtitle { color: #8868b8; }
+  .chip-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .chip-table th { font-size: 11px; font-weight: 700; color: #7a5a10; padding: 9px 10px; text-align: left; background: #fffbf0; border-bottom: 2px solid #e8d49055; }
+  .chip-table td { padding: 9px 10px; border-bottom: 1px solid #f0e8d844; color: #2a2a2a; }
+  .chip-table tr:hover td { background: #fffdf8; }
+  .rule-item { background: #ffffff; border-left: 4px solid #c8a044; border-radius: 0 8px 8px 0; padding: 14px 16px; font-size: 13px; color: #3a3028; line-height: 1.7; box-shadow: 0 1px 6px rgba(180,140,60,0.07); }
+  .rule-item strong { color: #7a5200; display: block; margin-bottom: 4px; font-size: 12px; font-weight: 700; }
+  .rule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; margin-top: 8px; }
+  .footer-note { text-align: center; font-size: 11px; color: #a09080; letter-spacing: 3px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e0d0b044; }
+  @media (max-width: 600px) { .nav-link { font-size: 11px; padding: 8px 6px; } .header h1 { font-size: 26px; } .dealer-card-body { padding: 0 14px 14px; } }
+
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<nav class="page-nav">
+  <div class="page-nav-inner">
+    <div class="nav-brand">MILLION</div>
+    <a class="nav-link" href="index.html">&#127968; システム概要</a>
+    <a class="nav-link" href="dealer-texas.html">&#9824;&#65039; テキサスディーラー</a>
+    <a class="nav-link" href="dealer-baccarat.html">&#127044; バカラディーラー</a>
+    <a class="nav-link" href="dealer-blackjack.html">&#127137; ブラックジャックディーラー</a>
+    <a class="nav-link active" href="staff-rules.html">&#128203; スタッフルール</a>
+    <a class="nav-link" href="staff.html">&#128101; スタッフ業務一覧</a>
+  </div>
+</nav>
+<div class="wrapper">
+
+  <div class="header">
+    <div class="header-badge">STAFF MANUAL</div>
+    <h1><span>スタッフルール</span></h1>
+    <p>STAFF REGULATIONS &amp; GUIDELINES</p>
+  </div>
+  <div class="gold-divider"><span>BASIC MANNER</span></div>
+  <div class="section-title">&#128100; 基本接客マナー</div>
+  <div class="rule-grid">
+    <div class="rule-item"><strong>笑顔・挨拶の徹底</strong>来店時は「いらっしゃいませ」、退店時は「ありがとうございました」を笑顔で必ず伝える。</div>
+    <div class="rule-item"><strong>名前での呼びかけ</strong>常連のお客様は名前で呼ぶ。初回は敬称をつけて丁寧に対応する。</div>
+    <div class="rule-item"><strong>会話のバランス</strong>お客様が話しかけてきたら積極的に対応。ゲーム進行を妨げない程度に会話する。</div>
+    <div class="rule-item"><strong>クレームの初期対応</strong>クレームは「申し訳ございません」から始め、内容を確認してすぐに責任者へ報告する。</div>
+    <div class="rule-item"><strong>お客様のドリンク</strong>グラスが空になっていたらすぐに声をかけるか、飲み物を補充する。</div>
+    <div class="rule-item"><strong>個人情報の取り扱い</strong>お客様の個人情報（名前・連絡先等）は店外で話さない。</div>
+  </div>
+  <div class="gold-divider"><span>OPENING / CLOSING</span></div>
+  <div class="section-title">&#128226; 開店・閉店業務</div>
+  <div class="game-section">
+    <div class="game-section-title">&#9728;&#65039; 開店前チェック（入店30分前まで完了）</div>
+    <div class="step-flow">
+      <div class="step-item"><div class="step-num">1</div><div class="step-text">テーブル・椅子の清掃・消毒。カード・チップの枚数確認</div></div>
+      <div class="step-item"><div class="step-num">2</div><div class="step-text">チップ在庫の確認・補充。両替用の現金準備</div></div>
+      <div class="step-item"><div class="step-num">3</div><div class="step-text">BGM・照明・空調の確認。備品（文具・レシート等）の補充</div></div>
+      <div class="step-item"><div class="step-num">4</div><div class="step-text">SNS・予約確認。当日の特別ルール・イベントをスタッフ間で共有</div></div>
+      <div class="step-item"><div class="step-num">5</div><div class="step-text">スタッフの役割分担を確認（受付・ディーラー・バー担当）</div></div>
+    </div>
+  </div>
+  <div class="game-section">
+    <div class="game-section-title">&#127769; 閉店後作業（全お客様退店後）</div>
+    <div class="step-flow">
+      <div class="step-item"><div class="step-num">1</div><div class="step-text">チップ・カードの回収・カウント確認。差異があれば即座に報告</div></div>
+      <div class="step-item"><div class="step-num">2</div><div class="step-text">売上の集計・記録。レジ締め作業</div></div>
+      <div class="step-item"><div class="step-num">3</div><div class="step-text">テーブル・カウンターの清掃。グラス・食器の洗浄・片付け</div></div>
+      <div class="step-item"><div class="step-num">4</div><div class="step-text">ゴミの分別・廃棄。在庫（ドリンク・食材）の確認・補充メモ</div></div>
+      <div class="step-item"><div class="step-num">5</div><div class="step-text">施錠・警報設定を確認してから退店</div></div>
+    </div>
+  </div>
+  <div class="gold-divider"><span>TABLE RULES</span></div>
+  <div class="section-title">&#127183; テーブルルール</div>
+  <div class="rule-grid">
+    <div class="rule-item"><strong>ベット締め切り</strong>ディーリング開始後のベット変更・追加は一切禁止。「No More Bets」のアナウンスを明確に行う。</div>
+    <div class="rule-item"><strong>チップの扱い</strong>チップはテーブル上でのみ取り扱う。床に落ちたチップは必ずスタッフが確認して処理する。</div>
+    <div class="rule-item"><strong>カードの取り扱い</strong>お客様がカードに触れる際のルールはゲームごとに案内。故意の傷・マーキングは即退場。</div>
+    <div class="rule-item"><strong>スマートフォン</strong>テーブル上でのスマートフォン操作は原則禁止（特にカメラ・撮影）。事前にアナウンスする。</div>
+    <div class="rule-item"><strong>飲食</strong>ドリンクはカップホルダーに置くよう案内。万一こぼれた場合は速やかに対処する。</div>
+    <div class="rule-item"><strong>言語・マナー</strong>他のお客様への迷惑行為・暴言は注意し、改善しない場合は退場をお願いする。</div>
+  </div>
+  <div class="gold-divider"><span>CHIP MANAGEMENT</span></div>
+  <div class="section-title">&#127922; チップ・キャッシュ管理</div>
+  <div class="rule-grid">
+    <div class="rule-item"><strong>チップ販売</strong>必ずキャッシュと引き換えに渡す。現金確認は2名以上で行い、金額を口頭で確認してから渡す。</div>
+    <div class="rule-item"><strong>チップ換金</strong>退店時に換金を申し出されたら、枚数を一緒に確認し、サインをもらって処理する。</div>
+    <div class="rule-item"><strong>チップ紛失・盗難</strong>チップの紛失・盗難が疑われる場合はすぐに責任者へ報告。お客様間のトラブルに発展しないよう注意する。</div>
+    <div class="rule-item"><strong>現金の管理</strong>カウンターの現金は必ず鍵のかかる場所に保管。個人のお金と混同しないよう管理する。</div>
+  </div>
+  <div class="gold-divider"><span>INCIDENT HANDLING</span></div>
+  <div class="section-title">&#128680; トラブル対応フロー</div>
+  <div class="game-section">
+    <div class="game-section-title">&#9888;&#65039; トラブル発生時の基本フロー</div>
+    <div class="step-flow">
+      <div class="step-item"><div class="step-num">1</div><div class="step-text">まず冷静に状況を確認し、感情的にならない</div></div>
+      <div class="step-item"><div class="step-num">2</div><div class="step-text">お客様に謝罪・落ち着くよう声がけしながら、責任者（店長）へ報告</div></div>
+      <div class="step-item"><div class="step-num">3</div><div class="step-text">ゲームトラブルはその場でマニュアルを確認し、公正に判断</div></div>
+      <div class="step-item"><div class="step-num">4</div><div class="step-text">判断に迷う場合は「確認します」と一言添えてからスタッフ間で相談</div></div>
+      <div class="step-item"><div class="step-num">5</div><div class="step-text">解決後、同様のトラブルを防ぐためにスタッフ全員へ共有・記録する</div></div>
+    </div>
+  </div>
+  <div class="warn-box"><strong>🚫 絶対禁止事項</strong>お客様に個人的な連絡先を渡すこと・店外での個人的な接触・勤務中の飲酒・他スタッフやお客様の悪口・SNSへの無断投稿。これらは即刻処分の対象となります。</div>
+  <div class="gold-divider"><span>APPEARANCE</span></div>
+  <div class="section-title">&#128084; 服装・身だしなみ</div>
+  <div class="rule-grid">
+    <div class="rule-item"><strong>制服・服装</strong>指定の制服または清潔感のある服装で出勤。派手すぎる装飾・過度なアクセサリーは禁止。</div>
+    <div class="rule-item"><strong>髪型・メイク</strong>清潔感を意識した髪型・メイクで。ディーラー業務時は髪をまとめること。</div>
+    <div class="rule-item"><strong>爪・香水</strong>爪は短く清潔に保つ。過度な爪の飾りは禁止。香水は控えめに。</div>
+    <div class="rule-item"><strong>体臭・口臭</strong>出勤前に確認する。ガムは不可。</div>
+  </div>
+  <div class="gold-divider"><span>GENERAL RULES</span></div>
+  <div class="section-title">&#128203; その他の規則</div>
+  <div class="rule-grid">
+    <div class="rule-item"><strong>遅刻・欠勤連絡</strong>遅刻・欠勤は必ずシフト開始2時間前までに連絡する。無断欠勤は厳禁。</div>
+    <div class="rule-item"><strong>業務中のスマートフォン</strong>業務中の私的なスマートフォン使用は禁止。緊急の場合のみバックヤードで対応する。</div>
+    <div class="rule-item"><strong>SNS・情報管理</strong>店内・お客様に関する情報をSNSに投稿することは禁止。店のSNS投稿は責任者が承認したもののみ。</div>
+    <div class="rule-item"><strong>勤務中の飲食</strong>バックヤードでスタッフ用として用意されたものを摂取するのみ。テーブル付近での飲食は禁止。</div>
+    <div class="rule-item"><strong>賄賂・チップの受け取り</strong>お客様からの個人的な金品の受け取りは禁止。感謝の気持ちをいただいた場合は責任者に報告する。</div>
+    <div class="rule-item"><strong>守秘義務</strong>店の売上・お客様情報・スタッフ情報は退職後も含め外部に漏らさないこと。</div>
+  </div>
+  <div class="footer-note">MILLION &mdash; STAFF REGULATIONS · KAGOSHIMA</div>
+
+</div>
+</body>
+</html>
