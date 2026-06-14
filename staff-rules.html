@@ -69,8 +69,28 @@
   .rule-item strong { color: #7a5200; display: block; margin-bottom: 4px; font-size: 12px; font-weight: 700; }
   .rule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; margin-top: 8px; }
   .footer-note { text-align: center; font-size: 11px; color: #a09080; letter-spacing: 3px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e0d0b044; }
-  @media (max-width: 600px) { .nav-link { font-size: 11px; padding: 8px 6px; } .header h1 { font-size: 26px; } .dealer-card-body { padding: 0 14px 14px; } }
+  @media (max-width: 600px) {
+    .page-nav-inner, .site-nav-inner { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+    .nav-link { font-size: 11px; padding: 6px 8px; min-height: 44px; }
+    .nav-brand { min-height: 44px; display: inline-flex; align-items: center; }
+    .header h1 { font-size: clamp(1.4rem, 5vw, 2rem); }
+    .rule-grid, .chef-grid { grid-template-columns: 1fr; }
+    .dealer-card { width: 100%; }
+    .dealer-card-header { align-items: flex-start; }
+    .dealer-card-body { padding: 0 14px 14px; }
+    .chip-table, table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .game-section li::before { font-size: 0.75em; }
+  }
 
+
+  @media (min-width: 1024px) {
+    .page-nav-inner, .site-nav-inner, .wrapper { max-width: 1100px; margin: 0 auto; }
+    table, .chip-table { width: 100%; }
+  }
+
+  @media all {
+    a, button, .nav-link { min-height: 44px; }
+  }
 </style>
 </head>
 <body>
