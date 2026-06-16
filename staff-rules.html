@@ -91,6 +91,126 @@
   @media all {
     a, button, .nav-link { min-height: 44px; }
   }
+
+  /* ── スタッフ規約セクション ── */
+  :root{
+    --green:#1f8a5b;
+    --green-dark:#156a45;
+    --green-light:#e9f5ef;
+  }
+  .rules-section-wrap{
+    background:#fff;
+    border:1.5px solid #e0c88055;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 2px 14px rgba(180,140,60,0.09);
+    margin-bottom:28px;
+  }
+  .rules-section-header{
+    background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);
+    color:#fff;
+    padding:24px 28px 20px;
+  }
+  .rules-section-header .brand{
+    font-size:12px;
+    letter-spacing:.3em;
+    opacity:.85;
+    font-weight:500;
+  }
+  .rules-section-header h2{
+    font-size:22px;
+    font-weight:700;
+    margin-top:6px;
+    letter-spacing:.04em;
+  }
+  .rules-section-header p{
+    margin-top:10px;
+    font-size:13px;
+    opacity:.9;
+  }
+  .rules-intro{
+    padding:16px 28px;
+    border-bottom:1px solid #e3e3e3;
+    font-size:13px;
+    color:#666;
+  }
+  .rules-body{padding:0 28px 28px;}
+  .s-rule{
+    border-bottom:1px solid #e3e3e3;
+    padding:22px 0;
+  }
+  .s-rule:last-child{border-bottom:none;}
+  .s-rule-head{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+  .s-num{
+    flex:0 0 auto;
+    width:32px;height:32px;
+    background:var(--green);
+    color:#fff;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;
+    font-size:14px;
+    margin-top:2px;
+  }
+  .s-rule-title{
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.02em;
+    padding-top:4px;
+    color:#222;
+  }
+  .s-reason{
+    margin:12px 0 0 46px;
+    background:var(--green-light);
+    border-left:4px solid var(--green);
+    border-radius:0 8px 8px 0;
+    padding:12px 16px;
+    font-size:13px;
+    color:#33513f;
+  }
+  .s-reason .s-label{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.15em;
+    color:var(--green-dark);
+    margin-bottom:4px;
+  }
+  .s-note{
+    margin:10px 0 0 46px;
+    font-size:12px;
+    color:#666;
+  }
+  .rules-footer{
+    background:#fafbfb;
+    border-top:1px solid #e3e3e3;
+    padding:18px 28px 22px;
+    font-size:12px;
+    color:#666;
+  }
+  .rules-sign{
+    margin-top:14px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .rules-sign .sign-box{
+    border:1px solid #e3e3e3;
+    border-radius:8px;
+    padding:12px 16px;
+    flex:1;
+    min-width:200px;
+  }
+  .rules-sign .sign-box span{color:#888;font-size:11px;display:block;margin-bottom:4px;}
+  @media(max-width:600px){
+    .rules-section-header,.rules-intro,.rules-body,.rules-footer{padding-left:16px;padding-right:16px;}
+    .s-reason,.s-note{margin-left:0;}
+  }
 </style>
 </head>
 <body>
@@ -113,6 +233,119 @@
     <h1><span>スタッフルール</span></h1>
     <p>STAFF REGULATIONS &amp; GUIDELINES</p>
   </div>
+  <!-- スタッフ規約 -->
+  <div class="rules-section-wrap">
+    <div class="rules-section-header">
+      <div class="brand">AMUSEMENT CASINO BAR</div>
+      <h2>million スタッフ規約</h2>
+      <p>本規約は、million で働くすべてのスタッフが安心して気持ちよく働き、お客様に質の高いサービスを提供し続けるための共通ルールです。一人ひとりが店舗の「顔」であることを意識して行動してください。</p>
+    </div>
+    <div class="rules-intro">
+      各項目には、なぜそのルールが必要なのか「理由」を添えています。ルールを守ること自体ではなく、その背景にある狙いを理解したうえで行動することを大切にしてください。
+    </div>
+    <div class="rules-body">
+
+      <div class="s-rule">
+        <div class="s-rule-head">
+          <div class="s-num">1</div>
+          <div class="s-rule-title">スタッフ間の恋愛禁止</div>
+        </div>
+        <div class="s-reason">
+          <span class="s-label">理由</span>
+          交際や別れがシフトの組みづらさ、特定スタッフへの偏り（えこひいき）、チーム内の空気の悪化につながりやすく、結果として接客の質やお客様満足度に直接影響します。スタッフ同士の関係性のもつれは、お客様にも敏感に伝わるものです。職場としての公平さと働きやすさを守るため、店舗内での交際は禁止とします。
+        </div>
+      </div>
+
+      <div class="s-rule">
+        <div class="s-rule-head">
+          <div class="s-num">2</div>
+          <div class="s-rule-title">ディーラー中にもらうチップは <span style="color:var(--green-dark)">$1 = ¥3</span> で計算する</div>
+        </div>
+        <div class="s-reason">
+          <span class="s-label">理由</span>
+          お客様からのチップはゲームチップ（ドル建て）で渡されるため、円換算の社内基準を統一しておく必要があります。スタッフごと・卓ごとに価値の数え方がバラバラだと、後述の上限管理が成立せず、不公平が生まれます。$1 = ¥3 を全スタッフ共通の換算レートとし、受け取ったチップは必ずこのレートで記録してください。
+        </div>
+      </div>
+
+      <div class="s-rule">
+        <div class="s-rule-head">
+          <div class="s-num">3</div>
+          <div class="s-rule-title">月にもらうチップ量の上限は <span style="color:var(--green-dark)">$1,000</span> まで</div>
+        </div>
+        <div class="s-reason">
+          <span class="s-label">理由</span>
+          チップ目的で特定のお客様や高レート卓に偏った接客をすると、ゲームの公平性とお客様全体への印象を損ないます。また、過度なチップの受け取りはスタッフ間の不公平や、収入管理上のトラブルの原因にもなります。上限を設けることで、全員が「サービスでチップをいただく」という本来の姿勢を保てるようにします。$1,000 を超える分の扱いについては、別途店舗の指示に従ってください。
+        </div>
+      </div>
+
+      <div class="s-rule">
+        <div class="s-rule-head">
+          <div class="s-num">4</div>
+          <div class="s-rule-title">体調不良・当日の欠勤連絡は <span style="color:var(--green-dark)">14時まで</span> に連絡する</div>
+        </div>
+        <div class="s-reason">
+          <span class="s-label">理由</span>
+          オープンに向けて、代替シフトの手配や人員配置の調整には時間が必要です。14時までに連絡をもらえれば、他スタッフへの声かけや卓数の調整に余裕をもって対応でき、当日の営業に穴を空けずに済みます。連絡が遅れるほど現場の負担が大きくなるため、体調に不安がある時点で早めの一報をお願いします。
+        </div>
+      </div>
+
+      <div class="s-rule">
+        <div class="s-rule-head">
+          <div class="s-num">5</div>
+          <div class="s-rule-title">制服に着替え、ディーラーに入れる準備が整った状態が「出勤時間」</div>
+        </div>
+        <div class="s-reason">
+          <span class="s-label">理由</span>
+          着替えや準備にかかる時間は人それぞれ異なるため、「準備が整って即戦力として卓に入れる状態」を出勤時間の基準とすることで、給与計算の公平性が保たれます。開店・シフト開始の時刻ちょうどに、すぐ業務へ入れるよう、余裕をもって来店・着替えを済ませてください。
+        </div>
+      </div>
+
+      <div class="s-rule">
+        <div class="s-rule-head">
+          <div class="s-num">6</div>
+          <div class="s-rule-title">他店舗のイベントで「2名以上での参加」が条件のトーナメントは参加不可</div>
+        </div>
+        <div class="s-note">対象例：他店舗のタッグマッチ・軍団戦 など</div>
+        <div class="s-reason">
+          <span class="s-label">理由</span>
+          チーム単位での参加は、million スタッフが他店舗のチームの一員として表に出ることになり、お客様から見て店舗の立場やつながりが分かりにくくなります。個人としての参加・交流は問題ありませんが、複数名での所属を前提とするイベントは、店舗の立ち位置を明確に保つために参加を控えてください。
+        </div>
+      </div>
+
+      <div class="s-rule">
+        <div class="s-rule-head">
+          <div class="s-num">7</div>
+          <div class="s-rule-title">他県の大型大会でのディーラー参加は不可</div>
+        </div>
+        <div class="s-note">対象例：JOPT など</div>
+        <div class="s-reason">
+          <span class="s-label">理由</span>
+          大型大会のディーラー業務は拘束時間が長く体力的な負担も大きいため、million 本来の営業シフトや体調管理に支障が出ます。また、million で身につけたディーリング技術・接客ノウハウは店舗の財産であり、それを外部で提供することは利益相反にあたります。スキルアップの機会については、店舗内や店舗が認めた範囲で取り組んでください。
+        </div>
+      </div>
+
+      <div class="s-rule">
+        <div class="s-rule-head">
+          <div class="s-num">8</div>
+          <div class="s-rule-title">バー・飲み屋・その他行事等、店舗外でのディーラー行為は禁止</div>
+        </div>
+        <div class="s-reason">
+          <span class="s-label">理由</span>
+          million の名前や技術を背負ったまま店舗外でディーリングを行うことは、トラブル時の責任の所在が不明確になり、店舗の信用やブランドを損なうリスクがあります。ディーラーとしての業務は、あくまで million の管理下で行うものとし、店舗外での個人的なディーリング依頼は受けないでください。
+        </div>
+      </div>
+
+    </div>
+    <div class="rules-footer">
+      本規約は店舗運営の状況に応じて改定されることがあります。内容について不明な点があれば、遠慮なく運営スタッフへ確認してください。規約を理解し、遵守することに同意のうえ勤務にあたるものとします。
+      <div class="rules-sign">
+        <div class="sign-box"><span>制定日</span>　　　年　　月　　日</div>
+        <div class="sign-box"><span>氏名（署名）</span>　　　　　　　　　　　　</div>
+      </div>
+    </div>
+  </div>
+  <!-- /スタッフ規約 -->
+
   <div class="gold-divider"><span>BASIC MANNER</span></div>
   <div class="section-title">&#128100; 基本接客マナー</div>
   <div class="rule-grid">
