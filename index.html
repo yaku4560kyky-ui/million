@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -10,7 +10,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: #f5f0e8;
+    background: #ffffff;
     color: #1a1a1a;
     font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
     min-height: 100vh;
@@ -19,7 +19,7 @@
   /* ── ページ背景：薄いゴールドのドット格子 ── */
   .bg-grid {
     position: fixed; inset: 0; z-index: 0;
-    background-image: radial-gradient(circle, #c8a04466 1px, transparent 1px);
+    background-image: radial-gradient(circle, #1f8a5b44 1px, transparent 1px);
     background-size: 28px 28px;
     pointer-events: none;
   }
@@ -36,9 +36,9 @@
   .header-badge {
     display: inline-block;
     font-size: 12px; font-weight: 700; letter-spacing: 4px;
-    color: #7a5a10;
-    background: #fff8e8;
-    border: 1.5px solid #c8a044;
+    color: #156a45;
+    background: #e9f5ef;
+    border: 1.5px solid #1f8a5b;
     padding: 6px 20px; border-radius: 3px;
     margin-bottom: 16px;
   }
@@ -49,95 +49,95 @@
     position: relative; display: inline-block;
   }
   .header h1 span {
-    background: linear-gradient(135deg, #c88820 0%, #f0c840 50%, #c88820 100%);
+    background: linear-gradient(135deg, #1f8a5b 0%, #2da870 50%, #1f8a5b 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-  .header p { font-size: 13px; color: #8a7a60; letter-spacing: 3px; font-weight: 500; }
+  .header p { font-size: 13px; color: #4a7a60; letter-spacing: 3px; font-weight: 500; }
 
   /* ── Gold Divider ── */
   .gold-divider { display: flex; align-items: center; gap: 14px; margin: 36px 0 20px; }
   .gold-divider::before, .gold-divider::after {
     content: ''; flex: 1; height: 1.5px;
-    background: linear-gradient(90deg, transparent, #c8a044, transparent);
+    background: linear-gradient(90deg, transparent, #1f8a5b, transparent);
   }
   .gold-divider span {
-    font-size: 11px; font-weight: 700; color: #8a6820; letter-spacing: 3px; white-space: nowrap;
-    background: #fff4d8; padding: 3px 14px; border-radius: 20px;
-    border: 1px solid #c8a04466;
+    font-size: 11px; font-weight: 700; color: #2a7a50; letter-spacing: 3px; white-space: nowrap;
+    background: #e9f5ef; padding: 3px 14px; border-radius: 20px;
+    border: 1px solid #1f8a5b44;
   }
 
   /* ── Section Title ── */
   .section-title {
-    font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #5a4010;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #1a5a3a;
     margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
-    border-left: 4px solid #c8a044; padding-left: 12px;
+    border-left: 4px solid #1f8a5b; padding-left: 12px;
   }
 
   /* ── Customer Journey Flow ── */
   .entry-flow {
     display: flex; align-items: stretch; margin-bottom: 40px;
     border-radius: 12px; overflow: hidden;
-    box-shadow: 0 2px 16px rgba(180,140,60,0.12);
-    border: 1.5px solid #e0c88066;
+    box-shadow: 0 2px 16px rgba(31,138,91,0.12);
+    border: 1.5px solid #7bc8a066;
   }
   .flow-step {
     flex: 1; padding: 22px 16px; background: #ffffff; position: relative;
     transition: background 0.2s;
-    border-right: 1px solid #e0c88044;
+    border-right: 1px solid #7bc8a044;
   }
   .flow-step:last-child { border-right: none; }
-  .flow-step:hover { background: #fffbf0; }
+  .flow-step:hover { background: #f0faf4; }
   .flow-step + .flow-step::before {
     content: '▶'; position: absolute; left: -13px; top: 50%; transform: translateY(-50%);
-    color: #c8a044; font-size: 15px; z-index: 2;
+    color: #1f8a5b; font-size: 15px; z-index: 2;
     background: #ffffff; padding: 2px;
   }
-  .flow-step-num { font-size: 10px; font-weight: 700; color: #c8a044; letter-spacing: 2px; margin-bottom: 8px; }
+  .flow-step-num { font-size: 10px; font-weight: 700; color: #1f8a5b; letter-spacing: 2px; margin-bottom: 8px; }
   .flow-step-title { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
-  .flow-step-sub { font-size: 12px; color: #6a6050; line-height: 1.7; }
+  .flow-step-sub { font-size: 12px; color: #3a6050; line-height: 1.7; }
 
   /* ── Cards ── */
   .card {
-    background: #ffffff; border: 1.5px solid #e0c88055;
+    background: #ffffff; border: 1.5px solid #7bc8a055;
     border-radius: 12px; padding: 22px;
     position: relative; overflow: hidden;
     transition: box-shadow 0.2s, transform 0.2s;
-    box-shadow: 0 2px 12px rgba(180,140,60,0.08);
+    box-shadow: 0 2px 12px rgba(31,138,91,0.08);
   }
-  .card:hover { box-shadow: 0 4px 20px rgba(180,140,60,0.18); transform: translateY(-2px); }
+  .card:hover { box-shadow: 0 4px 20px rgba(31,138,91,0.18); transform: translateY(-2px); }
   .card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: var(--card-accent, linear-gradient(90deg, #c8a044, #f0c840));
+    background: var(--card-accent, linear-gradient(90deg, #1f8a5b, #2da870));
   }
 
   /* ── Chip Table ── */
   .chip-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  .chip-table thead tr { border-bottom: 2px solid #e8d49055; }
+  .chip-table thead tr { border-bottom: 2px solid #7bc8a055; }
   .chip-table th {
-    font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #7a5a10;
-    padding: 10px 14px; text-align: left; background: #fffbf0;
+    font-size: 12px; font-weight: 700; letter-spacing: 1px; color: #156a45;
+    padding: 10px 14px; text-align: left; background: #f0faf4;
   }
-  .chip-table td { padding: 11px 14px; border-bottom: 1px solid #f0e8d844; color: #2a2a2a; }
-  .chip-table tr:hover td { background: #fffdf8; }
-  .chip-dollar { color: #9a6800; font-weight: 900; font-size: 15px; }
+  .chip-table td { padding: 11px 14px; border-bottom: 1px solid #d0eedc44; color: #2a2a2a; }
+  .chip-table tr:hover td { background: #f5fdf8; }
+  .chip-dollar { color: #156a45; font-weight: 900; font-size: 15px; }
   .chip-yen { color: #2a7a2a; font-weight: 700; }
   .chip-tag {
     display: inline-block; font-size: 10px; font-weight: 700;
     padding: 3px 9px; border-radius: 3px;
   }
-  .tag-silver { background: #e8eef4; color: #4a6080; border: 1px solid #a0b8c8; }
-  .tag-gold   { background: #fff4d0; color: #7a5800; border: 1px solid #d4a820; }
-  .tag-diamond{ background: #e0f8ff; color: #1a7098; border: 1px solid #5ab8e0; }
+  .tag-silver { background: #e9f5ef; color: #1a5a3a; border: 1px solid #7bc8a0; }
+  .tag-gold   { background: #e9f5ef; color: #156a45; border: 1px solid #1f8a5b; }
+  .tag-diamond{ background: #e9f5ef; color: #1a5a3a; border: 1px solid #2da870; }
 
   /* ── Rule Grid ── */
   .rule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
   .rule-item {
-    background: #ffffff; border-left: 4px solid #c8a044; border-radius: 0 8px 8px 0;
-    padding: 14px 16px; font-size: 13px; color: #3a3028; line-height: 1.7;
-    box-shadow: 0 1px 6px rgba(180,140,60,0.07);
+    background: #ffffff; border-left: 4px solid #1f8a5b; border-radius: 0 8px 8px 0;
+    padding: 14px 16px; font-size: 13px; color: #1a3a28; line-height: 1.7;
+    box-shadow: 0 1px 6px rgba(31,138,91,0.07);
   }
   .rule-item strong {
-    color: #7a5200; display: block; margin-bottom: 4px;
+    color: #156a45; display: block; margin-bottom: 4px;
     font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
   }
 
@@ -149,10 +149,10 @@
     transition: transform 0.2s;
   }
   .member-card:hover { transform: translateY(-3px); }
-  .member-card.silver  { background: linear-gradient(135deg,#eef2f7,#e4ecf4); border-color:#a0b8cc; }
-  .member-card.gold30  { background: linear-gradient(135deg,#fff8e4,#fff0c8); border-color:#d4a820; }
-  .member-card.gold180 { background: linear-gradient(135deg,#fffae0,#fff3b0); border-color:#e0b810; }
-  .member-card.diamond { background: linear-gradient(135deg,#e8f8ff,#d0f0ff); border-color:#5ab8e0; }
+  .member-card.silver  { background: linear-gradient(135deg,#f0faf4,#e4f4ec); border-color:#7bc8a0; }
+  .member-card.gold30  { background: linear-gradient(135deg,#e9f5ef,#d8eee4); border-color:#1f8a5b; }
+  .member-card.gold180 { background: linear-gradient(135deg,#d8f0e4,#c8e8d8); border-color:#156a45; }
+  .member-card.diamond { background: linear-gradient(135deg,#c8e8d8,#b8dfc8); border-color:#2da870; }
   .member-rank  { font-size: 13px; font-weight: 900; letter-spacing: 2px; margin-bottom: 5px; }
   .member-price { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
   .member-duration { font-size: 11px; font-weight: 500; opacity: 0.7; margin-bottom: 12px; letter-spacing: 1px; }
@@ -160,77 +160,77 @@
   .member-perks li::before { content: '✦ '; font-size: 9px; }
   .member-card.silver  .member-rank, .member-card.silver  .member-price { color: #3a5870; }
   .member-card.silver  .member-perks { color: #4a6070; }
-  .member-card.gold30  .member-rank, .member-card.gold30  .member-price { color: #7a5000; }
-  .member-card.gold30  .member-perks { color: #6a5020; }
-  .member-card.gold180 .member-rank, .member-card.gold180 .member-price { color: #6a4a00; }
-  .member-card.gold180 .member-perks { color: #6a5010; }
-  .member-card.diamond .member-rank, .member-card.diamond .member-price { color: #0a5878; }
-  .member-card.diamond .member-perks { color: #1a5868; }
+  .member-card.gold30  .member-rank, .member-card.gold30  .member-price { color: #1a5a3a; }
+  .member-card.gold30  .member-perks { color: #1a5a3a; }
+  .member-card.gold180 .member-rank, .member-card.gold180 .member-price { color: #156a45; }
+  .member-card.gold180 .member-perks { color: #156a45; }
+  .member-card.diamond .member-rank, .member-card.diamond .member-price { color: #0a5840; }
+  .member-card.diamond .member-perks { color: #1a5840; }
 
   /* ── Campaign Grid ── */
   .campaign-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
   .campaign-card {
-    background: #ffffff; border: 1.5px solid #e8d89055;
+    background: #ffffff; border: 1.5px solid #7bc8a055;
     border-radius: 10px; padding: 18px;
     display: flex; gap: 14px; align-items: flex-start;
     transition: box-shadow 0.2s, transform 0.2s;
-    box-shadow: 0 1px 6px rgba(180,140,60,0.07);
+    box-shadow: 0 1px 6px rgba(31,138,91,0.07);
   }
-  .campaign-card:hover { box-shadow: 0 4px 16px rgba(180,140,60,0.16); transform: translateY(-2px); }
+  .campaign-card:hover { box-shadow: 0 4px 16px rgba(31,138,91,0.16); transform: translateY(-2px); }
   .campaign-card.highlight {
-    border-color: #e0b820; background: #fffbe8; position: relative;
-    box-shadow: 0 2px 12px rgba(200,168,40,0.20);
+    border-color: #1f8a5b; background: #e9f5ef; position: relative;
+    box-shadow: 0 2px 12px rgba(31,138,91,0.20);
   }
   .campaign-card.highlight::after {
     content: 'NEW'; position: absolute; top: 10px; right: 12px;
     font-size: 9px; font-weight: 900; letter-spacing: 2px;
-    color: #7a5200; background: #fff0a0; border: 1px solid #d4a820;
+    color: #156a45; background: #e9f5ef; border: 1px solid #1f8a5b;
     padding: 2px 8px; border-radius: 3px;
   }
   .campaign-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
   .campaign-name { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 5px; }
-  .campaign-detail { font-size: 12px; color: #5a5040; line-height: 1.7; }
+  .campaign-detail { font-size: 12px; color: #3a5a40; line-height: 1.7; }
   .campaign-chip {
-    display: inline-block; background: #fff4c8; color: #7a5200;
-    border: 1.5px solid #d4a820; border-radius: 4px;
+    display: inline-block; background: #e9f5ef; color: #156a45;
+    border: 1.5px solid #1f8a5b; border-radius: 4px;
     font-size: 12px; font-weight: 900; padding: 3px 10px; margin-top: 6px;
   }
 
   /* ── SVG Wrapper ── */
   .relation-wrap {
-    background: #ffffff; border: 1.5px solid #e0c88066;
+    background: #ffffff; border: 1.5px solid #7bc8a066;
     border-radius: 12px; padding: 24px; overflow: auto;
-    box-shadow: 0 2px 16px rgba(180,140,60,0.10);
+    box-shadow: 0 2px 16px rgba(31,138,91,0.10);
   }
 
   /* ── Footer ── */
   .footer-note {
     text-align: center; margin-top: 48px;
-    font-size: 11px; font-weight: 500; letter-spacing: 3px; color: #b8a060;
+    font-size: 11px; font-weight: 500; letter-spacing: 3px; color: #4a8a60;
   }
 
   /* ── Page Navigation Tabs ── */
   .page-tabs {
     display: flex; gap: 0; margin-bottom: 0;
-    border-bottom: 2px solid #c8a044;
+    border-bottom: 2px solid #1f8a5b;
     position: sticky; top: 0; z-index: 100;
-    background: #f5f0e8;
+    background: #ffffff;
     padding: 16px 0 0;
   }
   .page-tab {
     padding: 12px 28px; font-size: 14px; font-weight: 700;
-    color: #8a7060; cursor: pointer;
+    color: #1a5a3a; cursor: pointer;
     border: 1.5px solid transparent; border-bottom: none;
     border-radius: 8px 8px 0 0;
-    background: #ece8e0;
+    background: #d8eee4;
     transition: all 0.2s;
     user-select: none;
     position: relative; bottom: -2px;
   }
-  .page-tab:hover { background: #fff8e8; color: #5a3a00; }
+  .page-tab:hover { background: #e9f5ef; color: #156a45; }
   .page-tab.active {
-    background: #ffffff; color: #3a2000;
-    border-color: #c8a044; border-bottom-color: #ffffff;
+    background: #ffffff; color: #1a4030;
+    border-color: #1f8a5b; border-bottom-color: #ffffff;
   }
   .page-tab .tab-icon { margin-right: 6px; }
 
@@ -247,12 +247,12 @@
   }
   .dealer-card {
     background: #ffffff; border-radius: 14px;
-    border: 1.5px solid #e0c88055;
+    border: 1.5px solid #7bc8a055;
     overflow: hidden;
-    box-shadow: 0 2px 14px rgba(180,140,60,0.09);
+    box-shadow: 0 2px 14px rgba(31,138,91,0.09);
     transition: box-shadow 0.2s, transform 0.2s;
   }
-  .dealer-card:hover { box-shadow: 0 6px 24px rgba(180,140,60,0.18); transform: translateY(-3px); }
+  .dealer-card:hover { box-shadow: 0 6px 24px rgba(31,138,91,0.18); transform: translateY(-3px); }
   .dealer-card-header {
     padding: 18px 22px;
     display: flex; align-items: center; gap: 14px;
@@ -263,71 +263,71 @@
   .dealer-card-body { padding: 0 22px 22px; }
 
   /* ── Game color themes ── */
-  .dealer-card.baccarat .dealer-card-header { background: linear-gradient(135deg,#1a3a5c,#0d2540); }
-  .dealer-card.baccarat .dealer-card-title  { color: #90d8ff; }
-  .dealer-card.baccarat .dealer-card-subtitle { color: #6090b8; }
+  .dealer-card.baccarat .dealer-card-header { background: linear-gradient(135deg,#0a3a22,#051e10); }
+  .dealer-card.baccarat .dealer-card-title  { color: #80e8b0; }
+  .dealer-card.baccarat .dealer-card-subtitle { color: #60b890; }
 
-  .dealer-card.blackjack .dealer-card-header { background: linear-gradient(135deg,#1a3a20,#0d2510); }
-  .dealer-card.blackjack .dealer-card-title  { color: #80e890; }
-  .dealer-card.blackjack .dealer-card-subtitle { color: #508858; }
+  .dealer-card.blackjack .dealer-card-header { background: linear-gradient(135deg,#163a22,#0a2512); }
+  .dealer-card.blackjack .dealer-card-title  { color: #a0f0c0; }
+  .dealer-card.blackjack .dealer-card-subtitle { color: #60b890; }
 
-  .dealer-card.holdem .dealer-card-header { background: linear-gradient(135deg,#3a1a10,#250d00); }
-  .dealer-card.holdem .dealer-card-title  { color: #ffa060; }
-  .dealer-card.holdem .dealer-card-subtitle { color: #a06040; }
+  .dealer-card.holdem .dealer-card-header { background: linear-gradient(135deg,#0d3a20,#062010); }
+  .dealer-card.holdem .dealer-card-title  { color: #80f0b0; }
+  .dealer-card.holdem .dealer-card-subtitle { color: #60b890; }
 
-  .dealer-card.plo .dealer-card-header { background: linear-gradient(135deg,#2a1a3a,#180d28); }
-  .dealer-card.plo .dealer-card-title  { color: #c8a0ff; }
-  .dealer-card.plo .dealer-card-subtitle { color: #8868b8; }
+  .dealer-card.plo .dealer-card-header { background: linear-gradient(135deg,#0d3a2a,#06201a); }
+  .dealer-card.plo .dealer-card-title  { color: #80f0c0; }
+  .dealer-card.plo .dealer-card-subtitle { color: #60b890; }
 
   /* ── Game Sections ── */
   .game-section {
     margin-top: 18px;
-    border-left: 3px solid #e0c080;
+    border-left: 3px solid #7bc8a0;
     padding-left: 14px;
     margin-bottom: 14px;
   }
   .game-section-title {
     font-size: 12px; font-weight: 900; letter-spacing: 2px;
-    color: #7a5a10; margin-bottom: 8px;
+    color: #156a45; margin-bottom: 8px;
     text-transform: uppercase;
   }
   .game-section ul { list-style: none; padding: 0; }
   .game-section ul li {
-    font-size: 13px; color: #3a3028; line-height: 1.8;
+    font-size: 13px; color: #1a3a28; line-height: 1.8;
     padding-left: 14px; position: relative;
   }
   .game-section ul li::before {
     content: '▸'; position: absolute; left: 0;
-    color: #c8a044; font-size: 11px; top: 2px;
+    color: #1f8a5b; font-size: 11px; top: 2px;
   }
-  .game-section p { font-size: 13px; color: #3a3028; line-height: 1.8; }
+  .game-section p { font-size: 13px; color: #1a3a28; line-height: 1.8; }
 
   /* ── Warning / Caution boxes ── */
   .caution-box {
-    background: #fff8e8; border: 1.5px solid #e0a820;
+    background: #e9f5ef; border: 1.5px solid #1f8a5b;
     border-radius: 8px; padding: 12px 16px;
-    margin-top: 14px; font-size: 12px; color: #6a4800; line-height: 1.8;
+    margin-top: 14px; font-size: 12px; color: #1a4830; line-height: 1.8;
   }
-  .caution-box strong { color: #9a5000; font-weight: 900; display: block; margin-bottom: 4px; }
+  .caution-box strong { color: #156a45; font-weight: 900; display: block; margin-bottom: 4px; }
   .warn-box {
-    background: #fff0f0; border: 1.5px solid #e05030;
+    background: #f0f8f4; border: 1.5px solid #e05030;
     border-radius: 8px; padding: 12px 16px;
-    margin-top: 10px; font-size: 12px; color: #7a2010; line-height: 1.8;
+    margin-top: 10px; font-size: 12px; color: #1a3a28; line-height: 1.8;
   }
-  .warn-box strong { color: #a01808; font-weight: 900; display: block; margin-bottom: 4px; }
+  .warn-box strong { color: #156a45; font-weight: 900; display: block; margin-bottom: 4px; }
   .info-box {
-    background: #f0f8ff; border: 1.5px solid #5090c0;
+    background: #e9f5ef; border: 1.5px solid #5090c0;
     border-radius: 8px; padding: 12px 16px;
-    margin-top: 10px; font-size: 12px; color: #1a4870; line-height: 1.8;
+    margin-top: 10px; font-size: 12px; color: #1a4030; line-height: 1.8;
   }
-  .info-box strong { color: #0a3060; font-weight: 900; display: block; margin-bottom: 4px; }
+  .info-box strong { color: #1a4030; font-weight: 900; display: block; margin-bottom: 4px; }
 
   /* ── Shoe Info Badge ── */
   .shoe-badge {
     display: inline-flex; align-items: center; gap: 6px;
-    background: #fffbf0; border: 1.5px solid #c8a044;
+    background: #f0faf4; border: 1.5px solid #1f8a5b;
     border-radius: 6px; padding: 5px 12px;
-    font-size: 12px; font-weight: 700; color: #7a5200;
+    font-size: 12px; font-weight: 700; color: #156a45;
     margin: 10px 0 4px;
   }
   .shoe-badge span { font-size: 16px; }
@@ -336,25 +336,25 @@
   .step-flow { margin-top: 10px; }
   .step-item {
     display: flex; gap: 12px; align-items: flex-start;
-    padding: 8px 0; border-bottom: 1px solid #f0e8d8;
+    padding: 8px 0; border-bottom: 1px solid #d0eedc;
   }
   .step-item:last-child { border-bottom: none; }
   .step-num {
     min-width: 26px; height: 26px; border-radius: 50%;
-    background: #c8a044; color: #fff;
+    background: #1f8a5b; color: #fff;
     font-size: 12px; font-weight: 900;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0; margin-top: 1px;
   }
-  .step-text { font-size: 13px; color: #2a2018; line-height: 1.7; }
+  .step-text { font-size: 13px; color: #1a3a28; line-height: 1.7; }
 
   /* ---- Page Navigation ---- */
-  .page-nav { position: sticky; top: 0; z-index: 100; background: rgba(255,248,232,0.97); backdrop-filter: blur(8px); border-bottom: 1.5px solid #e0c880; box-shadow: 0 2px 12px rgba(180,140,60,0.10); }
+  .page-nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1.5px solid #7bc8a0; box-shadow: 0 2px 12px rgba(31,138,91,0.10); }
   .page-nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 16px; display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
-  .nav-brand { font-size: 13px; font-weight: 900; letter-spacing: 3px; color: #7a5200; padding: 12px 12px 12px 4px; border-right: 1.5px solid #e0c88055; margin-right: 4px; white-space: nowrap; }
-  .nav-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: #5a4010; text-decoration: none; padding: 10px 12px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; letter-spacing: 0.5px; }
-  .nav-link:hover { background: #fff4d0; color: #7a3800; }
-  .nav-link.active { background: linear-gradient(135deg, #c88820, #e8a820); color: #fff; box-shadow: 0 2px 8px rgba(200,136,32,0.30); }
+  .nav-brand { font-size: 13px; font-weight: 900; letter-spacing: 3px; color: #156a45; padding: 12px 12px 12px 4px; border-right: 1.5px solid #7bc8a055; margin-right: 4px; white-space: nowrap; }
+  .nav-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: #1a5a3a; text-decoration: none; padding: 10px 12px; border-radius: 6px; transition: background 0.15s, color 0.15s; white-space: nowrap; letter-spacing: 0.5px; }
+  .nav-link:hover { background: #e9f5ef; color: #156a45; }
+  .nav-link.active { background: linear-gradient(135deg, #1f8a5b, #2da870); color: #fff; box-shadow: 0 2px 8px rgba(31,138,91,0.30); }
 
   @media (max-width: 600px) {
     .page-nav-inner, .site-nav-inner { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
@@ -362,7 +362,7 @@
     .nav-brand { min-height: 44px; display: inline-flex; align-items: center; }
     .header h1 { font-size: clamp(1.4rem, 5vw, 2rem); }
     .entry-flow { display: block; }
-    .flow-step { border-right: none; border-bottom: 1px solid #e0c88044; }
+    .flow-step { border-right: none; border-bottom: 1px solid #7bc8a044; }
     .flow-step:last-child { border-bottom: none; }
     .flow-step + .flow-step::before { display: none; }
     .rule-grid, .chef-grid, .member-grid, .campaign-grid, .dealer-grid { grid-template-columns: 1fr; }
@@ -636,24 +636,24 @@
           <div style="font-size:28px;margin-bottom:6px">🍹</div>
           <div style="font-size:14px;font-weight:900;color:#a02060;margin-bottom:4px">飲み放題</div>
           <div style="font-size:22px;font-weight:900;color:#c83070">2時間</div>
-          <div style="font-size:11px;color:#a06080;margin-top:4px">ソフトドリンク・アルコール含む</div>
+          <div style="font-size:11px;color:#608070;margin-top:4px">ソフトドリンク・アルコール含む</div>
         </div>
         <div style="background:#fff0f6;border:1.5px solid #f090b8;border-radius:10px;padding:16px;text-align:center">
           <div style="font-size:28px;margin-bottom:6px">🎰</div>
           <div style="font-size:14px;font-weight:900;color:#a02060;margin-bottom:4px">カジノゲーム</div>
           <div style="font-size:22px;font-weight:900;color:#c83070">チップ利用し放題</div>
-          <div style="font-size:11px;color:#a06080;margin-top:4px">全ゲーム対応</div>
+          <div style="font-size:11px;color:#608070;margin-top:4px">全ゲーム対応</div>
         </div>
-        <div style="background:#fff8e0;border:1.5px solid #e0b820;border-radius:10px;padding:16px;text-align:center">
+        <div style="background:#e9f5ef;border:1.5px solid #1f8a5b;border-radius:10px;padding:16px;text-align:center">
           <div style="font-size:28px;margin-bottom:6px">🎁</div>
-          <div style="font-size:14px;font-weight:900;color:#7a5000;margin-bottom:4px">幹事様特典</div>
+          <div style="font-size:14px;font-weight:900;color:#1a5a3a;margin-bottom:4px">幹事様特典</div>
           <div style="font-size:20px;font-weight:900;color:#b87000">$100 × 人数分</div>
           <div style="font-size:11px;color:#8a6020;margin-top:4px">通常営業チップを付与</div>
         </div>
       </div>
 
       <!-- 重要注意事項 -->
-      <div style="background:#fff0f0;border:2px solid #e04040;border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
+      <div style="background:#f0f8f4;border:2px solid #e04040;border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start">
         <div style="font-size:22px;flex-shrink:0">⚠️</div>
         <div>
           <div style="font-size:13px;font-weight:900;color:#a01010;margin-bottom:5px">重要：チップの扱いについて</div>
@@ -728,7 +728,7 @@
             エントリー料金から ¥1,000 割引
           </div>
         </div>
-        <div style="background:#fff0f0;border:1.5px solid #e08080;border-radius:10px;padding:16px">
+        <div style="background:#f0f8f4;border:1.5px solid #e08080;border-radius:10px;padding:16px">
           <div style="font-size:12px;font-weight:700;color:#a02020;letter-spacing:1px;margin-bottom:8px">🚫 併用不可</div>
           <div style="font-size:13px;color:#7a2020;line-height:1.8">
             <strong>チップエントリーとの併用不可</strong><br>
@@ -774,7 +774,7 @@
       <title>Million Casino システム相関図</title>
       <defs>
         <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M2 1L8 5L2 9" fill="none" stroke="#c8a044" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M2 1L8 5L2 9" fill="none" stroke="#1f8a5b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </marker>
         <marker id="arr-silver" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
           <path d="M2 1L8 5L2 9" fill="none" stroke="#6090b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -791,21 +791,21 @@
       <rect x="10" y="10" width="940" height="610" rx="12" fill="#fdfaf4" stroke="#d4b04466" stroke-width="1"/>
 
       <!-- ─ CUSTOMER（中央）─ -->
-      <rect x="385" y="255" width="190" height="68" rx="10" fill="#fff8e0" stroke="#c8a044" stroke-width="2"/>
-      <text x="480" y="280" text-anchor="middle" fill="#7a5200" font-size="15" font-weight="700">CUSTOMER</text>
-      <text x="480" y="304" text-anchor="middle" fill="#a08040" font-size="13">お客様</text>
+      <rect x="385" y="255" width="190" height="68" rx="10" fill="#e9f5ef" stroke="#1f8a5b" stroke-width="2"/>
+      <text x="480" y="280" text-anchor="middle" fill="#156a45" font-size="15" font-weight="700">CUSTOMER</text>
+      <text x="480" y="304" text-anchor="middle" fill="#3a6050" font-size="13">お客様</text>
 
       <!-- ─ 入場受付 ─ -->
       <rect x="55" y="255" width="158" height="68" rx="8" fill="#fff8f0" stroke="#d0904455" stroke-width="1.5"/>
       <text x="134" y="280" text-anchor="middle" fill="#5a3010" font-size="14" font-weight="700">入場受付</text>
       <text x="134" y="302" text-anchor="middle" fill="#8a6040" font-size="12">¥1,100 / 条件免除</text>
-      <line x1="213" y1="289" x2="383" y2="289" stroke="#c8a044" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arr)"/>
+      <line x1="213" y1="289" x2="383" y2="289" stroke="#1f8a5b" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#arr)"/>
 
       <!-- ─ チップ購入 ─ -->
       <rect x="385" y="65" width="190" height="68" rx="8" fill="#fff8f0" stroke="#d0904455" stroke-width="1.5"/>
       <text x="480" y="90" text-anchor="middle" fill="#5a3010" font-size="14" font-weight="700">チップ購入</text>
       <text x="480" y="115" text-anchor="middle" fill="#8a6040" font-size="12">$50 〜 $150,000</text>
-      <line x1="480" y1="133" x2="480" y2="253" stroke="#c8a044" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="480" y1="133" x2="480" y2="253" stroke="#1f8a5b" stroke-width="1.5" marker-end="url(#arr)"/>
 
       <!-- ─ 新規特典 ─ -->
       <rect x="55" y="58" width="155" height="60" rx="8" fill="#eefaf2" stroke="#3a9040aa" stroke-width="1.5"/>
@@ -823,8 +823,8 @@
 
       <!-- ─ ご紹介ボーナス ─ -->
       <rect x="55" y="400" width="162" height="72" rx="8" fill="#f4ffec" stroke="#3a9040" stroke-width="2"/>
-      <rect x="178" y="402" width="36" height="18" rx="3" fill="#fff0a0" stroke="#d4a820" stroke-width="1"/>
-      <text x="196" y="415" text-anchor="middle" fill="#7a5200" font-size="9" font-weight="900">NEW</text>
+      <rect x="178" y="402" width="36" height="18" rx="3" fill="#e9f5ef" stroke="#1f8a5b" stroke-width="1"/>
+      <text x="196" y="415" text-anchor="middle" fill="#156a45" font-size="9" font-weight="900">NEW</text>
       <text x="136" y="426" text-anchor="middle" fill="#1a6028" font-size="13" font-weight="700">ご紹介ボーナス</text>
       <text x="136" y="445" text-anchor="middle" fill="#3a7030" font-size="12">ご新規様 1名につき</text>
       <text x="136" y="463" text-anchor="middle" fill="#2a8030" font-size="13" font-weight="900">$200 チップ</text>
@@ -833,20 +833,20 @@
 
       <!-- ─ SILVER ─ -->
       <rect x="742" y="128" width="172" height="88" rx="8" fill="#eef3f8" stroke="#6090b8" stroke-width="1.5"/>
-      <text x="828" y="153" text-anchor="middle" fill="#1a4870" font-size="14" font-weight="700">SILVER</text>
+      <text x="828" y="153" text-anchor="middle" fill="#1a4030" font-size="14" font-weight="700">SILVER</text>
       <text x="828" y="172" text-anchor="middle" fill="#3a6888" font-size="12">$3,000〜 / 30日間</text>
       <text x="828" y="190" text-anchor="middle" fill="#3a6888" font-size="12">入場無料・飲み放題</text>
       <text x="828" y="207" text-anchor="middle" fill="#5a8098" font-size="11">（SILVERランク以下）</text>
       <path d="M575 98 L742 162" stroke="#6090b8" stroke-width="1.2" fill="none" marker-end="url(#arr-silver)"/>
 
       <!-- ─ GOLD ─ -->
-      <rect x="742" y="258" width="172" height="96" rx="8" fill="#fff8e0" stroke="#c8a020" stroke-width="2"/>
-      <text x="828" y="283" text-anchor="middle" fill="#6a4800" font-size="14" font-weight="700">GOLD</text>
-      <text x="828" y="301" text-anchor="middle" fill="#8a6010" font-size="12">30日間 / 180日間</text>
-      <text x="828" y="318" text-anchor="middle" fill="#8a6010" font-size="12">入場無料・飲み放題</text>
-      <text x="828" y="334" text-anchor="middle" fill="#a07820" font-size="11">チップ譲渡 1〜2名/日</text>
-      <text x="828" y="348" text-anchor="middle" fill="#a07820" font-size="11">$15,000〜$60,000</text>
-      <path d="M575 292 L740 295" stroke="#c8a020" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+      <rect x="742" y="258" width="172" height="96" rx="8" fill="#e9f5ef" stroke="#1f8a5b" stroke-width="2"/>
+      <text x="828" y="283" text-anchor="middle" fill="#1a4830" font-size="14" font-weight="700">GOLD</text>
+      <text x="828" y="301" text-anchor="middle" fill="#1a5a3a" font-size="12">30日間 / 180日間</text>
+      <text x="828" y="318" text-anchor="middle" fill="#1a5a3a" font-size="12">入場無料・飲み放題</text>
+      <text x="828" y="334" text-anchor="middle" fill="#1a5a3a" font-size="11">チップ譲渡 1〜2名/日</text>
+      <text x="828" y="348" text-anchor="middle" fill="#1a5a3a" font-size="11">$15,000〜$60,000</text>
+      <path d="M575 292 L740 295" stroke="#1f8a5b" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
 
       <!-- ─ DIAMOND ─ -->
       <rect x="742" y="400" width="172" height="96" rx="8" fill="#e0f4ff" stroke="#1a90c0" stroke-width="1.5"/>
@@ -858,7 +858,7 @@
       <path d="M575 308 L742 442" stroke="#1a90c0" stroke-width="1.2" fill="none" marker-end="url(#arr-diamond)"/>
 
       <!-- ─ キャンペーン ─ -->
-      <rect x="385" y="418" width="190" height="116" rx="8" fill="#fff4f0" stroke="#d05030aa" stroke-width="1.5"/>
+      <rect x="385" y="418" width="190" height="116" rx="8" fill="#f0f8f4" stroke="#d05030aa" stroke-width="1.5"/>
       <text x="480" y="443" text-anchor="middle" fill="#8a2010" font-size="14" font-weight="700">キャンペーン</text>
       <text x="480" y="462" text-anchor="middle" fill="#a04030" font-size="12">毎週火曜レディースデー</text>
       <text x="480" y="479" text-anchor="middle" fill="#a04030" font-size="12">雨・灰の日チンチロ</text>
@@ -875,13 +875,13 @@
 
       <!-- チップ譲渡ライン -->
       <text x="698" y="378" text-anchor="middle" fill="#b8901844" font-size="10" font-weight="700">チップ譲渡</text>
-      <path d="M740 392 L660 355 L576 322" stroke="#c8a044" stroke-width="0.8" stroke-dasharray="3 3" fill="none" marker-end="url(#arr)"/>
+      <path d="M740 392 L660 355 L576 322" stroke="#1f8a5b" stroke-width="0.8" stroke-dasharray="3 3" fill="none" marker-end="url(#arr)"/>
 
       <!-- Legend -->
-      <rect x="40" y="558" width="760" height="42" rx="6" fill="#fffbf0" stroke="#e0c88066" stroke-width="1"/>
-      <line x1="60" y1="579" x2="86" y2="579" stroke="#c8a044" stroke-width="1.5" stroke-dasharray="5 3"/>
+      <rect x="40" y="558" width="760" height="42" rx="6" fill="#f0faf4" stroke="#7bc8a066" stroke-width="1"/>
+      <line x1="60" y1="579" x2="86" y2="579" stroke="#1f8a5b" stroke-width="1.5" stroke-dasharray="5 3"/>
       <text x="94" y="583" fill="#6a5828" font-size="11">チップ付与</text>
-      <line x1="164" y1="579" x2="190" y2="579" stroke="#c8a044" stroke-width="1.5"/>
+      <line x1="164" y1="579" x2="190" y2="579" stroke="#1f8a5b" stroke-width="1.5"/>
       <text x="198" y="583" fill="#6a5828" font-size="11">購入フロー</text>
       <line x1="268" y1="579" x2="294" y2="579" stroke="#6090b8" stroke-width="1.5"/>
       <text x="302" y="583" fill="#6a5828" font-size="11">会員昇格</text>
